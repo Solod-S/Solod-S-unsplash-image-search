@@ -41,6 +41,8 @@ export function Modal({ whenClose, data, indx, changeIndx }) {
       window.removeEventListener('keydown', scrollImgByKeyDown);
     };
   });
+  console.log(data[indx].links.download);
+  console.log(data[indx].id);
   return createPortal(
     <ModalOverlay onClick={handleBackDropClick}>
       {indx !== 0 && (
