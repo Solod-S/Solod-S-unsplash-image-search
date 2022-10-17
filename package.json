@@ -1,0 +1,66 @@
+{
+  "name": "unsplash",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://Solod-S.github.io/Unsplash-Image-Search-REST-API",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "animate.css": "^4.1.1",
+    "axios": "^1.0.0",
+    "classnames": "^2.3.2",
+    "formik": "^2.2.9",
+    "modern-normalize": "^0.6.0",
+    "node-gyp": "^9.1.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-player": "^2.11.0",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^8.1.0",
+    "react-transition-group": "^4.4.5",
+    "shortid": "^2.2.16",
+    "styled-components": "^5.3.6",
+    "styled-system": "^5.1.5",
+    "yup": "^0.32.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Solod-S/Unsplash-Image-Search-REST-API.git"
+  },
+  "author": "Solod S.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Solod-S/Unsplash-Image-Search-REST-API/issues"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint:js": "eslint src/**/*.{js,jsx}"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
