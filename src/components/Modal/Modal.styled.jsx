@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiSave } from 'react-icons/fi';
+
+import { BsDownload } from 'react-icons/bs';
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -21,15 +23,35 @@ export const ModalImg = styled.img`
 `;
 export const ShowPrevImg = styled(FiChevronLeft)`
   cursor: pointer;
-  transition: transform 0.25s;
+  transition: fill 0.25s, transform 0.25s;
   :hover {
     transform: scale(1.4);
+    fill: red;
   }
 `;
 export const ShowNextImg = styled(FiChevronRight)`
   cursor: pointer;
-  transition: transform 0.25s;
+  transition: fill 0.25s, transform 0.25s;
   :hover {
     transform: scale(1.4);
+    fill: red;
+  }
+`;
+export const ModalBtnDownload = styled.button`
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-30px, -10px);
+`;
+export const ModalIconDownload = styled(FiSave)`
+  cursor: pointer;
+  opacity: 0.6;
+
+  transition: fill 0.25s, opacity 0.25s, transform 0.25s;
+  ${ModalBtnDownload}:hover & {
+    opacity: 1;
+    transform: scale(1.4);
+    fill: red;
   }
 `;

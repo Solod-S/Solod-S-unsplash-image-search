@@ -84,6 +84,10 @@ function App() {
     setIndx(imageLink);
     toggleModal();
   };
+  // const setIndxForModal = imageLink => {
+  //   setIndx(imageLink);
+  //   toggleModal();
+  // };
   const changeIndx = value => {
     setIndx(prevState => prevState + value);
   };

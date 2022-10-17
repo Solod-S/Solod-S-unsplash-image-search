@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const ImageGalleryItemLi = styled.li`
+  position: relative;
   color: ${p => p.theme.colors.primaryText};
   width: 350px;
   height: 233px;
