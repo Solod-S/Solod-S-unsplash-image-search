@@ -9,7 +9,7 @@ import {
 } from './Modal.styled';
 import { createPortal } from 'react-dom';
 import { object } from 'yup';
-const HREF = '#';
+
 const modalRoot = document.querySelector('#modal-root');
 
 export function Modal({ whenClose, data, indx, changeIndx }) {
@@ -32,7 +32,7 @@ export function Modal({ whenClose, data, indx, changeIndx }) {
     }
   };
 
-  const { urls, alt_description, links } = data[indx];
+  const { urls, alt_description } = data[indx];
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keydown', scrollImgByKeyDown);
