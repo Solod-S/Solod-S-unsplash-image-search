@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight, FiSave } from 'react-icons/fi';
 
-import { BsDownload } from 'react-icons/bs';
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
