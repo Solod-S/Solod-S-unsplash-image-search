@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Unsplash-Image-Search-REST-API/static/css/main.929a830d.css",
+    "main.js": "/Unsplash-Image-Search-REST-API/static/js/main.95d3ecc9.js",
+    "static/media/Pixabay-logo.png": "/Unsplash-Image-Search-REST-API/static/media/Pixabay-logo.4b965756b8ab375a8ea2.png",
+    "index.html": "/Unsplash-Image-Search-REST-API/index.html",
+    "main.929a830d.css.map": "/Unsplash-Image-Search-REST-API/static/css/main.929a830d.css.map",
+    "main.95d3ecc9.js.map": "/Unsplash-Image-Search-REST-API/static/js/main.95d3ecc9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.929a830d.css",
+    "static/js/main.95d3ecc9.js"
+  ]
+}
