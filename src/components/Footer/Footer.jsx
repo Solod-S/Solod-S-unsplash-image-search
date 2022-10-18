@@ -1,6 +1,16 @@
 import React from 'react';
-import { FooterEl } from './Footer.styled';
+import { FooterEl, CopyrightText, CopyrightLink } from './Footer.styled';
 
 export const Footer = () => {
-  return <FooterEl>Copyright © Все права защищены.</FooterEl>;
+  return (
+    <FooterEl id="down">
+      <CopyrightText>
+        Copyright ©{''}
+        <CopyrightLink href="https://github.com/Solod-S">
+          My Website
+        </CopyrightLink>{' '}
+        2022.
+      </CopyrightText>
+    </FooterEl>
+  );
 };

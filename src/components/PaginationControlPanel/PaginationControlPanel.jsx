@@ -17,19 +17,19 @@ export const ButtonPanel = ({
   totalPages,
 }) => {
   return (
-    <Wrapper className="animate__animated animate__pulse" id="down">
+    <Wrapper className="animate__animated animate__pulse">
       {currentPage !== 1 && (
         <PrevPageBtn type="button" onClick={() => onLoadMore(-1)}>
           <PrevPageIcon size={25} fill="#444444" />
         </PrevPageBtn>
       )}
-      {searchQuery && (
+      {searchQuery && totalPages && currentPage && (
         <CurrentPage>
           {currentPage}/{totalPages}
         </CurrentPage>
       )}
 
-      {images.length > 11 && (
+      {totalPages > currentPage && (
         <NextPageBtn type="button" onClick={() => onLoadMore(+1)}>
           <NextPageIcon size={25} fill="#444444" />
         </NextPageBtn>

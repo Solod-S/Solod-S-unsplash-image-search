@@ -21,7 +21,7 @@ export const GetImages = async (searchQuery, page) => {
 export const getRandomImages = async () => {
   const response = await axios.get(
     // `photos/?client_id=${options.key}&page=1&per_page=${options.per_page}&order_by=popular`
-    `photos/random/?client_id=${options.key}&count=${options.per_page}`
+    `photos/random/?client_id=${options.key}&count=30`
   );
 
   return response;

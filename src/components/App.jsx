@@ -35,7 +35,6 @@ function App() {
 
       const imagesResponse = await getRandomImages();
       const images = imagesResponse.data;
-      console.log(imagesResponse);
 
       const preparedImgs = images.map(
         ({ id, urls, alt_description, links }) => ({
@@ -91,7 +90,7 @@ function App() {
 
       setImages(prevState => [...preparedImgs]);
       setIsLoading(false);
-      setTotalPages(Math.ceil(imagesResponse.data.total / 12));
+      setTotalPages(Math.ceil(imagesResponse.data.total / 40));
       if (page === 1) {
         toast.success(
           `Всего было найдено ${imagesResponse.data.total} картинок.`,
@@ -153,7 +152,6 @@ function App() {
         draggable={false}
         pauseOnHover
       />
-
       {error && (
         <ErrorMsg>Something wrong.. Press F5 and try again. :( </ErrorMsg>
       )}
@@ -172,6 +170,7 @@ function App() {
           totalPages={totalPages}
         />
       )} */}
+      (
       <ButtonPanel
         onLoadMore={onLoadMore}
         currentPage={page}
@@ -179,7 +178,7 @@ function App() {
         searchQuery={searchQuery}
         totalPages={totalPages}
       />
-      {images.length > 11 && <ScrollChevron />}
+      ){images.length > 11 && <ScrollChevron />}
       {showModal && (
         <Modal
           whenClose={toggleModal}
@@ -188,7 +187,6 @@ function App() {
           changeIndx={changeIndx}
         />
       )}
-
       <Footer>Copyright © Все права защищены.</Footer>
       {/* так как кнопка пропадает когда доходим до конца, мне нужен якорь для скрола по шеврону)) */}
     </AppWrapper>
