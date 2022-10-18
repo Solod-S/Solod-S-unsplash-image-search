@@ -6,11 +6,12 @@ const options = {
   page: 1,
   per_page: 40,
 };
-const { key, per_page, orientation } = options;
+const { key, per_page } = options;
 axios.defaults.baseURL = 'https://api.unsplash.com/search/photos';
 export const GetImages = async (searchQuery, page) => {
   const response = await axios.get(
-    `?client_id=${key}&query=${searchQuery}&orientation=${orientation}&page=${page}&per_page=${per_page}`
+    `?client_id=${key}&query=${searchQuery}&page=${page}&per_page=${per_page}`
+    //  `?client_id=${key}&query=${searchQuery}&orientation=${orientation}&page=${page}&per_page=${per_page}`
   );
   // return response.data.data;
   return response;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { ImageGalleryList } from './ImageGallery.styled';
+import { ImageGalleryList, ImageGalleryContainer } from './ImageGallery.styled';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
 export const ImageGallery = ({ images, setIndx }) => {
   return (
-    <>
+    <ImageGalleryContainer>
       <ImageGalleryList>
         {images.map((image, indx) => (
           <ImageGalleryItem
@@ -16,7 +16,7 @@ export const ImageGallery = ({ images, setIndx }) => {
           />
         ))}
       </ImageGalleryList>
-    </>
+    </ImageGalleryContainer>
   );
 };
 

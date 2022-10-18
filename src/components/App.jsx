@@ -18,6 +18,7 @@ import { Footer } from './Footer/Footer';
 function App() {
   const [images, setImages] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('cat');
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
