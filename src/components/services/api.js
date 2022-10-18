@@ -18,10 +18,15 @@ export const GetImages = async (searchQuery, page) => {
 
   return response;
 };
-export const GetPopularImages = async () => {
+export const getRandomImages = async () => {
   const response = await axios.get(
-    `photos/?client_id=${options.key}&page=1&per_page=${options.per_page}&order_by=latest`
+    // `photos/?client_id=${options.key}&page=1&per_page=${options.per_page}&order_by=popular`
+    `photos/random/?client_id=${options.key}&count=${options.per_page}`
   );
 
   return response;
 };
+// export function getRandomImages() {
+//   const URL = `https://api.unsplash.com/photos/random/?client_id=${options.key}&count=${options.per_page}`;
+//   return fetch(URL);
+// }

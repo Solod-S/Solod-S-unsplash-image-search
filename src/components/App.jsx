@@ -3,7 +3,7 @@ import Searchbar from './Searchbar/Searchbar';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 import { ErrorMsg, AppWrapper } from './App.styled';
-import { GetImages, GetPopularImages } from './services/api';
+import { GetImages, getRandomImages } from './services/api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { ButtonPanel } from './PaginationControlPanel/PaginationControlPanel';
 import { Modal } from './Modal/Modal';
@@ -32,7 +32,8 @@ function App() {
     // console.log(firstRenderPassed.current);
     async function fetch() {
       setIsLoading(true);
-      const imagesResponse = await GetPopularImages();
+
+      const imagesResponse = await getRandomImages();
       const images = imagesResponse.data;
       console.log(imagesResponse);
 

@@ -30,7 +30,7 @@ export default function Searchbar({ onImgsSeach }) {
   return (
     <SearchBarHeader>
       <SearchBarLinkLogo
-        href="https://pixabay.com/api/docs/"
+        href="https://unsplash.com/documentation/"
         target="_blank"
         rel="noopener noreferrer nofollow"
       >

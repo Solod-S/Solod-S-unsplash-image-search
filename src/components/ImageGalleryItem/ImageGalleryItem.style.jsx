@@ -13,7 +13,7 @@ export const ImageGalleryItemLi = styled.li`
   object-fit: contain;
   object-position: center;
   overflow: hidden;
-  cursor: pointer;
+  cursor: zoom-in;
   transition: transform 0.25s;
 
   :hover {
