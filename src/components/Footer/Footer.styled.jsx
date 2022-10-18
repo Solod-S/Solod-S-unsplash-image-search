@@ -7,5 +7,6 @@ export const FooterEl = styled.footer`
   width: 100%; */
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[1]}px;
   color: ${p => p.theme.colors.primaryText};
-  text-align: center;
+  text-align: end;
+  /* padding-right: 50px; */
 `;

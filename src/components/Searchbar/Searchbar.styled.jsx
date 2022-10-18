@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const SearchBarHeader = styled.header`
-  z-index: 2;
+  z-index: 999;
   display: flex;
   position: fixed;
   width: 100%;

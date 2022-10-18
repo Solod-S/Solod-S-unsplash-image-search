@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
-import { ErrorMsg } from './App.styled';
-import { GetImages } from './services/api';
+import { ErrorMsg, AppWrapper } from './App.styled';
+import { GetImages, GetPopularImages } from './services/api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { Button } from './Button/Button';
+import { ButtonPanel } from './PaginationControlPanel/PaginationControlPanel';
 import { Modal } from './Modal/Modal';
 import { LoaderSpiner } from './Loader/Loader';
 import { ScrollChevron } from './ScrollChevron/ScrollChevron';
@@ -17,25 +17,25 @@ import { Footer } from './Footer/Footer';
 
 function App() {
   const [images, setImages] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  // const [searchQuery, setSearchQuery] = useState('cat');
-  const [page, setPage] = useState(1);
+  // const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(() => FirstRender());
+  const [page, setPage] = useState(1);
+
   const [error, setError] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [indx, setIndx] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
+  const firstRenderPassed = useRef(false);
 
-  useEffect(() => {
-    if (!searchQuery) {
-      return;
-    }
-
+  async function FirstRender() {
+    // console.log(firstRenderPassed.current);
     async function fetch() {
       setIsLoading(true);
-      const imagesResponse = await GetImages(searchQuery, page);
-      const images = imagesResponse.data.results;
-      console.log(images);
+      const imagesResponse = await GetPopularImages();
+      const images = imagesResponse.data;
+      console.log(imagesResponse);
+
       const preparedImgs = images.map(
         ({ id, urls, alt_description, links }) => ({
           id,
@@ -44,8 +44,51 @@ function App() {
           links,
         })
       );
-      console.log(preparedImgs);
-      setImages(prevState => [...prevState, ...preparedImgs]);
+
+      setImages(prevState => [...preparedImgs]);
+      setIsLoading(false);
+      setTotalPages(Math.ceil(imagesResponse.data.total / 12));
+      // if (page === 1) {
+      //   toast.success(
+      //     `Всего было найдено ${imagesResponse.data.total} картинок.`,
+      //     successSettings
+      //   );
+      // }
+    }
+    try {
+      fetch();
+    } catch (error) {
+      console.log(error, `Попробуйте перезагрузить страницу`);
+      toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
+      setError(error);
+    }
+  }
+
+  useEffect(() => {
+    // console.log(firstRenderPassed.current);
+    if (!firstRenderPassed.current) {
+      firstRenderPassed.current = true;
+      return;
+    }
+    if (!searchQuery) {
+      return;
+    }
+
+    async function fetch() {
+      setIsLoading(true);
+      const imagesResponse = await GetImages(searchQuery, page);
+      const images = imagesResponse.data.results;
+
+      const preparedImgs = images.map(
+        ({ id, urls, alt_description, links }) => ({
+          id,
+          urls,
+          alt_description,
+          links,
+        })
+      );
+
+      setImages(prevState => [...preparedImgs]);
       setIsLoading(false);
       setTotalPages(Math.ceil(imagesResponse.data.total / 12));
       if (page === 1) {
@@ -74,8 +117,8 @@ function App() {
     setSearchQuery(newSearchQuery);
     setPage(1);
   };
-  const onLoadMore = async () => {
-    setPage(prevState => prevState + 1);
+  const onLoadMore = async value => {
+    setPage(prevState => prevState + value);
   };
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
@@ -94,7 +137,7 @@ function App() {
   };
 
   return (
-    <div id="up">
+    <AppWrapper id="up">
       <Searchbar onImgsSeach={handleFormSubmit} />
       <ToastContainer
         transition={Flip}
@@ -109,6 +152,7 @@ function App() {
         draggable={false}
         pauseOnHover
       />
+
       {error && (
         <ErrorMsg>Something wrong.. Press F5 and try again. :( </ErrorMsg>
       )}
@@ -120,9 +164,20 @@ function App() {
         />
       )}
       {isLoading && <LoaderSpiner />}
-      {images.length > 11 && totalPages !== page && (
-        <Button onLoadMore={onLoadMore} />
-      )}
+      {/* {images.length > 11 && currentPage !== 1 &&(
+        <ButtonPanel
+          onLoadMore={onLoadMore}
+          currentPage={page}
+          totalPages={totalPages}
+        />
+      )} */}
+      <ButtonPanel
+        onLoadMore={onLoadMore}
+        currentPage={page}
+        images={images}
+        searchQuery={searchQuery}
+        totalPages={totalPages}
+      />
       {images.length > 11 && <ScrollChevron />}
       {showModal && (
         <Modal
@@ -135,7 +190,7 @@ function App() {
 
       <Footer>Copyright © Все права защищены.</Footer>
       {/* так как кнопка пропадает когда доходим до конца, мне нужен якорь для скрола по шеврону)) */}
-    </div>
+    </AppWrapper>
   );
 }
 

@@ -18,7 +18,7 @@ export const ModalModal = styled.div`
   max-height: calc(100vh - 24px);
 `;
 export const ModalImg = styled.img`
-  height: 90vh;
+  max-height: 90vh;
   cursor: pointer;
 `;
 export const ShowPrevImg = styled(FiChevronLeft)`

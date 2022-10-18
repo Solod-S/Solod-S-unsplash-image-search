@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const ImageGalleryContainer = styled.div`
-  padding-top: 94px;
+  padding-top: 100px;
   padding-bottom: 12px;
   /* margin-top: 1rem; */
   max-width: 1300px;

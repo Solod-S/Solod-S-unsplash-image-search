@@ -8,3 +8,10 @@ export const ErrorMsg = styled.p`
   z-index: 3;
   font-weight: 500;
 `;
+export const AppWrapper = styled.div`
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
