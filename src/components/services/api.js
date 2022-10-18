@@ -20,7 +20,7 @@ export const GetImages = async (searchQuery, page) => {
 };
 export const GetPopularImages = async () => {
   const response = await axios.get(
-    `photos/?client_id=${options.key}&per_page=${options.per_page}&order_by=latest`
+    `photos/?client_id=${options.key}&page=1&per_page=${options.per_page}&order_by=latest`
   );
 
   return response;
