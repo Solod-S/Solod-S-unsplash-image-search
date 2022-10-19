@@ -12,7 +12,6 @@ import {
 export const ButtonPanel = ({
   onLoadMore,
   currentPage,
-  images,
   searchQuery,
   totalPages,
 }) => {
@@ -39,4 +38,10 @@ export const ButtonPanel = ({
 };
 ButtonPanel.propTypes = {
   onLoadMore: PropTypes.func.isRequired,
+};
+ButtonPanel.propTypes = {
+  onLoadMore: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };

@@ -14,28 +14,7 @@ import { object } from 'yup';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function Modal({ whenClose, data, indx, changeIndx }) {
-  const downloadImage = async () => {
-    try {
-      const response = await fetch(data[indx].urls.full);
-
-      const blob = await response.blob();
-
-      let url = window.URL.createObjectURL(blob);
-
-      let a = document.createElement('a');
-      a.style = 'display: none';
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = data.id;
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      alert('Something Went Wrong... Unable to Download Image');
-      console.log(error);
-    }
-  };
+export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
   const scrollImgByKeyDown = event => {
     if (event.code === 'ArrowRight' && indx + 1 !== data.length) {
       changeIndx(+1);
@@ -72,7 +51,7 @@ export function Modal({ whenClose, data, indx, changeIndx }) {
       )}
       <ModalModal className="animate__animated animate__pulse">
         <ModalBtnDownload
-          onClick={downloadImage}
+          onClick={() => downloadImage({ data, indx })}
           variant="contained"
           size="small"
           // disableElevation
@@ -97,74 +76,5 @@ Modal.propTypes = {
   changeIndx: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(object).isRequired,
   indx: PropTypes.number.isRequired,
+  downloadImage: PropTypes.func.isRequired,
 };
-
-//----------
-//State
-//----------
-// const modalRoot = document.querySelector('#modal-root');
-// export class Modal extends React.Component {
-//   static propTypes = {
-//     whenClose: PropTypes.func.isRequired,
-//     changeZoomImage: PropTypes.func.isRequired,
-//     data: PropTypes.arrayOf(object).isRequired,
-//     indx: PropTypes.number.isRequired,
-//   };
-//   componentDidMount() {
-//     window.addEventListener('keydown', this.handleKeyDown);
-//     window.addEventListener('keydown', this.scrollImgByKeyDown);
-//   }
-//   componentWillUnmount() {
-//     window.removeEventListener('keydown', this.handleKeyDown);
-//     window.removeEventListener('keydown', this.scrollImgByKeyDown);
-//   }
-//   scrollImgByKeyDown = event => {
-//     if (
-//       event.code === 'ArrowRight' &&
-//       this.props.indx + 1 !== this.props.data.length
-//     ) {
-//       this.props.changeZoomImage(+1);
-//     }
-//     if (event.code === 'ArrowLeft' && this.props.indx !== 0) {
-//       this.props.changeZoomImage(-1);
-//     }
-//   };
-//   handleKeyDown = event => {
-//     if (event.code === 'Escape') {
-//       // console.log(`Escape нажали`);
-//       this.props.whenClose();
-//     }
-//   };
-//   handleBackDropClick = event => {
-//     if (event.currentTarget === event.target) {
-//       this.props.whenClose();
-//     }
-//   };
-
-//   render() {
-//     const { indx, data, changeZoomImage } = this.props;
-//     const { largeImageURL, tags } = data[indx];
-//     return createPortal(
-//       <ModalOverlay onClick={this.handleBackDropClick}>
-//         {indx !== 0 && (
-//           <ShowPrevImg
-//             size={55}
-//             fill="#fff"
-//             onClick={() => changeZoomImage(-1)}
-//           />
-//         )}
-//         <ModalModal>
-//           <ModalImg src={largeImageURL} alt={tags} />
-//         </ModalModal>
-//         {indx + 1 !== data.length && (
-//           <ShowNextImg
-//             size={55}
-//             fill="#fff"
-//             onClick={() => changeZoomImage(+1)}
-//           />
-//         )}
-//       </ModalOverlay>,
-//       modalRoot
-//     );
-//   }
-// }
