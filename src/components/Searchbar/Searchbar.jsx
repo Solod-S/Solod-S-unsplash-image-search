@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
+  SearchBarContainer,
   SearchBarHeader,
   SearchBarForm,
   SearchBarButton,
@@ -29,28 +30,30 @@ export default function Searchbar({ onImgsSeach }) {
 
   return (
     <SearchBarHeader>
-      <SearchBarLinkLogo
+      <SearchBarContainer>
+        {/* <SearchBarLinkLogo
         href="https://unsplash.com/documentation/"
         target="_blank"
         rel="noopener noreferrer nofollow"
       >
         <SearchBarLogo src={logo} />
-      </SearchBarLinkLogo>
+      </SearchBarLinkLogo> */}
 
-      <SearchBarForm onSubmit={handleSubeventmit}>
-        <SearchBarInput
-          type="text"
-          autoComplete="off"
-          autoFocus
-          name="searchQuery"
-          value={searchQuery}
-          onChange={handleNameChange}
-          placeholder="Search images and photos"
-        />
-        <SearchBarButton type="submit">
-          <IoIosSearch size={18} fill="#444444" />
-        </SearchBarButton>
-      </SearchBarForm>
+        <SearchBarForm onSubmit={handleSubeventmit}>
+          <SearchBarInput
+            type="text"
+            autoComplete="off"
+            autoFocus
+            name="searchQuery"
+            value={searchQuery}
+            onChange={handleNameChange}
+            placeholder="Search images and photos"
+          />
+          <SearchBarButton type="submit">
+            <IoIosSearch size={18} fill="#444444" />
+          </SearchBarButton>
+        </SearchBarForm>
+      </SearchBarContainer>
     </SearchBarHeader>
   );
 }

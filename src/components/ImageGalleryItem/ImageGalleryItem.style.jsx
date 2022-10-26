@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { FiSave } from 'react-icons/fi';
 export const ImageGalleryItemLi = styled.li`
   position: relative;
+  overflow: hidden;
   color: ${p => p.theme.colors.primaryText};
   /* max-width: 350px;
   height: 100%; */
@@ -30,34 +32,68 @@ export const ImageGalleryItemImg = styled.img`
     transform: scale(1.2);
   }
 `;
-// import styled from 'styled-components';
-// export const ImageGalleryItemLi = styled.li`
-//   position: relative;
-//   color: ${p => p.theme.colors.primaryText};
-//   width: 350px;
-//   height: 233px;
-//   margin: ${p => p.theme.space[4]}px;
+export const ImageGalleryItemHoverWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* transform: translateY(101%); */
+  /* padding: 63px 24px; */
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  ${ImageGalleryItemLi}:hover & {
+    opacity: 1;
+  }
+`;
+export const ImageFooter = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1;
+  z-index: 2;
+`;
+export const ImageFooterLeft = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  text-decoration: none;
+`;
+export const ImageFooterName = styled.h4`
+  color: white;
+`;
+export const ImagefooterDownloadBtn = styled.button`
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-30px, -10px);
+`;
+export const ImageDownloadIcon = styled(FiSave)`
+  cursor: pointer;
+  opacity: 0.6;
 
-//   border-radius: ${p => p.theme.radii.normal};
-//   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-//     1px 4px 6px rgba(0, 0, 0, 0.16);
-
-//   object-fit: contain;
-//   object-position: center;
-//   overflow: hidden;
-//   cursor: pointer;
-//   transition: transform 0.25s;
-
-//   :hover {
-//     transform: scale(1.1);
-//   }
-// `;
-// export const ImageGalleryItemImg = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   transition: transform 0.25s;
-
-//   ${ImageGalleryItemLi}:hover & {
-//     transform: scale(1.2);
-//   }
-// `;
+  transition: fill 0.25s, opacity 0.25s, transform 0.25s;
+  ${ImagefooterDownloadBtn}:hover & {
+    opacity: 1;
+    transform: scale(1.4);
+    fill: grey;
+  }
+`;
+export const FooterLink = styled.a`
+  display: flex;
+  align-items: center;
+  transition: transform 0.25s;
+  :hover {
+    transform: scale(1.1);
+  }
+`;
+export const FooterImg = styled.img`
+  border-radius: ${p => p.theme.radii.round};
+  margin-right: 1rem;
+`;

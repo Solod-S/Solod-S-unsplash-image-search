@@ -22,19 +22,23 @@ export const ModalImg = styled.img`
   cursor: pointer;
 `;
 export const ShowPrevImg = styled(FiChevronLeft)`
+  position: absolute;
+  left: 2rem;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
   :hover {
     transform: scale(1.4);
-    fill: red;
+    fill: grey;
   }
 `;
 export const ShowNextImg = styled(FiChevronRight)`
+  position: absolute;
+  right: 2rem;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
   :hover {
     transform: scale(1.4);
-    fill: red;
+    fill: grey;
   }
 `;
 export const ModalBtnDownload = styled.button`
@@ -52,6 +56,6 @@ export const ModalIconDownload = styled(FiSave)`
   ${ModalBtnDownload}:hover & {
     opacity: 1;
     transform: scale(1.4);
-    fill: red;
+    fill: grey;
   }
 `;

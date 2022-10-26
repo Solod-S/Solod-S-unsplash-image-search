@@ -36,11 +36,12 @@ function App() {
       const images = imagesResponse.data;
 
       const preparedImgs = images.map(
-        ({ id, urls, alt_description, links }) => ({
+        ({ id, urls, alt_description, links, user }) => ({
           id,
           urls,
           alt_description,
           links,
+          user,
         })
       );
 
@@ -72,11 +73,12 @@ function App() {
       const images = imagesResponse.data.results;
 
       const preparedImgs = images.map(
-        ({ id, urls, alt_description, links }) => ({
+        ({ id, urls, alt_description, links, user }) => ({
           id,
           urls,
           alt_description,
           links,
+          user,
         })
       );
 
@@ -120,14 +122,30 @@ function App() {
     setIndx(imageLink);
     toggleModal();
   };
-  // const setIndxForModal = imageLink => {
-  //   setIndx(imageLink);
-  //   toggleModal();
-  // };
   const changeIndx = value => {
     setIndx(prevState => prevState + value);
   };
+  const downloadImageFromMain = async ({ data }) => {
+    try {
+      const response = await fetch(data.urls.full);
 
+      const blob = await response.blob();
+
+      let url = window.URL.createObjectURL(blob);
+
+      let a = document.createElement('a');
+      a.style = 'display: none';
+      document.body.appendChild(a);
+      a.href = url;
+      a.download = data.id;
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      alert('Something Went Wrong... Unable to Download Image');
+      console.log(error);
+    }
+  };
   const downloadImage = async ({ data, indx }) => {
     try {
       const response = await fetch(data[indx].urls.full);
@@ -173,6 +191,7 @@ function App() {
           images={images}
           openModal={toggleModal}
           setIndx={setIndxForModal}
+          downloadImage={downloadImageFromMain}
         />
       )}
       {isLoading && <LoaderSpiner />}
@@ -183,7 +202,7 @@ function App() {
           totalPages={totalPages}
         />
       )} */}
-      (
+
       <ButtonPanel
         onLoadMore={onLoadMore}
         currentPage={page}
@@ -191,7 +210,7 @@ function App() {
         searchQuery={searchQuery}
         totalPages={totalPages}
       />
-      ){images.length > 11 && <ScrollChevron />}
+      {images.length > 11 && <ScrollChevron />}
       {showModal && (
         <Modal
           whenClose={toggleModal}

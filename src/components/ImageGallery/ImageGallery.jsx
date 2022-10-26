@@ -3,7 +3,7 @@ import { ImageGalleryList, ImageGalleryContainer } from './ImageGallery.styled';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ images, setIndx }) => {
+export const ImageGallery = ({ images, setIndx, downloadImage }) => {
   return (
     <ImageGalleryContainer>
       <ImageGalleryList>
@@ -13,6 +13,7 @@ export const ImageGallery = ({ images, setIndx }) => {
             data={image}
             setIndx={setIndx}
             indx={indx}
+            downloadImage={downloadImage}
           />
         ))}
       </ImageGalleryList>

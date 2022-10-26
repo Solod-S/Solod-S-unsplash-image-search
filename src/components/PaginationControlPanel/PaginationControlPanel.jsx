@@ -38,10 +38,10 @@ export const ButtonPanel = ({
 };
 ButtonPanel.propTypes = {
   onLoadMore: PropTypes.func.isRequired,
-};
-ButtonPanel.propTypes = {
-  onLoadMore: PropTypes.func.isRequired,
-  searchQuery: PropTypes.string.isRequired,
+  searchQuery: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.object.isRequired,
+  ]),
   totalPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
 };
