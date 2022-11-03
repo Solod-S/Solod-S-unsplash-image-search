@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-export const Chevron = styled.div``;
+export const Chevron = styled.div`
+  @media screen and (max-width: 1400px) {
+    display: none;
+  }
+`;
 
 export const ChevronUp = styled.a`
   display: flex;

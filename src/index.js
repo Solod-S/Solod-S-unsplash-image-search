@@ -3,7 +3,8 @@ import 'Css/my_preset.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Box } from './components/Box/Box.jsx';
-import App from './components/App.jsx';
+
+import { App } from './components/App.jsx';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/theme';
 import { BrowserRouter } from 'react-router-dom';

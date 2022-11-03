@@ -46,9 +46,6 @@ export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
 
   return createPortal(
     <ModalOverlay onClick={handleBackDropClick}>
-      {indx !== 0 && (
-        <ShowPrevImg size={77} fill="#fff" onClick={() => changeIndx(-1)} />
-      )}
       <ModalModal className="animate__animated animate__pulse">
         <ModalBtnDownload
           onClick={() => downloadImage({ data, indx })}
@@ -60,6 +57,9 @@ export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
 
         <ModalImg src={urls.regular} alt={alt_description} />
       </ModalModal>
+      {indx !== 0 && (
+        <ShowPrevImg size={77} fill="#fff" onClick={() => changeIndx(-1)} />
+      )}
       {indx + 1 !== data.length && (
         <ShowNextImg size={77} fill="#fff" onClick={() => changeIndx(+1)} />
       )}
