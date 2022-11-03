@@ -65,7 +65,11 @@ export const ImageFooterLeft = styled.div`
   text-decoration: none;
 `;
 export const ImageFooterName = styled.h4`
+  font-size: 16px;
   color: white;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
 export const ImagefooterDownloadBtn = styled.button`
   cursor: pointer;
@@ -83,6 +87,9 @@ export const ImageDownloadIcon = styled(FiSave)`
     opacity: 1;
     transform: scale(1.4);
     fill: grey;
+    @media screen and (max-width: 700px) {
+      transform: scale(1.1);
+    }
   }
 `;
 export const FooterLink = styled.a`

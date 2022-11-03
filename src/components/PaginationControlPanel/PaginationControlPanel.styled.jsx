@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
   display: flex;
 
   justify-content: center;
+  @media screen and (max-width: 450px) {
+    margin-top: 20px;
+  }
 `;
 export const PrevPageIcon = styled(AiOutlineStepBackward)``;
 export const NextPageIcon = styled(AiOutlineStepForward)``;
@@ -28,5 +31,5 @@ export const NextPageBtn = styled.button`
 `;
 
 export const CurrentPage = styled.p`
-  font-size: 20px;
+  font-size: ${p => p.theme.fontSizes.m};
 `;

@@ -20,10 +20,15 @@ export const ModalModal = styled.div`
 export const ModalImg = styled.img`
   max-height: 90vh;
   cursor: pointer;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 `;
 export const ShowPrevImg = styled(FiChevronLeft)`
   position: absolute;
-  left: 2rem;
+  left: 0;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
   :hover {
@@ -33,7 +38,7 @@ export const ShowPrevImg = styled(FiChevronLeft)`
 `;
 export const ShowNextImg = styled(FiChevronRight)`
   position: absolute;
-  right: 2rem;
+  right: 0;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
   :hover {

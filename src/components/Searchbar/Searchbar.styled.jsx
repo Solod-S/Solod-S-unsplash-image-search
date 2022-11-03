@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import img from '../../img/header.jpg';
 
 export const SearchBarHeader = styled.header`
-  padding-top: 0.3rem;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -12,13 +11,13 @@ export const SearchBarContainer = styled.div`
   margin-right: auto;
   display: flex;
 
-  max-width: 1400px;
+  /* max-width: 1600px; */
 
   justify-content: center;
   justify-content: space-between;
   background-color: ${p => p.theme.colors.secondaryBackGroundColor};
   padding: 200px 50px;
-  border-radius: ${p => p.theme.radii.normal};
+
   transition: padding 250ms linear;
   background-image: linear-gradient(
       to right,
@@ -45,19 +44,23 @@ export const SearchBarInput = styled.input`
   border: none;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  padding: 8px;
+  padding: ${p => p.theme.space[3]}px;
   transition: width 250ms linear;
 `;
 export const SearchBarButton = styled.button`
   align-items: center;
   justify-content: center;
   display: flex;
-  padding: 10px;
+  padding: ${p => p.theme.space[3]}px;
 
   background-color: ${p => p.theme.colors.primaryText};
   border: none;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
+  transition: background-color 250ms linear;
+  :hover {
+    background-color: ${p => p.theme.colors.hoverBtnColor};
+  }
 `;
 export const SearchBarLogo = styled.img`
   height: 30px;
