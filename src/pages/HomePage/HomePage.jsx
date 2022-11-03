@@ -18,7 +18,7 @@ import {
   successSettings,
 } from 'components/services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
-import { Route, Routes, Navigate } from 'react-router-dom';
+// import { Route, Routes, Navigate } from 'react-router-dom';
 
 function HomePage() {
   const [images, setImages] = useState([]);
