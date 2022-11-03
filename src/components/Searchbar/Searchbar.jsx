@@ -6,11 +6,11 @@ import {
   SearchBarForm,
   SearchBarButton,
   SearchBarInput,
-  SearchBarLogo,
-  SearchBarLinkLogo,
+  // SearchBarLogo,
+  // SearchBarLinkLogo,
 } from './Searchbar.styled';
 import { IoIosSearch } from 'react-icons/io';
-import logo from '../../img/Pixabay-logo.png';
+// import logo from '../../img/Pixabay-logo.png';
 
 export default function Searchbar({ onImgsSeach }) {
   const [searchQuery, setSearchQuery] = useState('');
