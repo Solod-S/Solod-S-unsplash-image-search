@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
+  ImageAddToFavoriteBtn,
+  ImageAddToFavoriteIcon,
   ImageGalleryItemLi,
   ImageGalleryItemImg,
   ImageGalleryItemHoverWrapper,
   ImageFooter,
-  ImageFooterLeft,
+  ImageFooterWrapper,
   ImageFooterName,
   ImagefooterDownloadBtn,
   ImageDownloadIcon,
@@ -24,6 +26,13 @@ export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
   return (
     <>
       <ImageGalleryItemLi animate__wobble onClick={setIndxInModal}>
+        <ImageAddToFavoriteBtn
+          onClick={() => downloadImage({ data })}
+          variant="contained"
+          size="small"
+        >
+          <ImageAddToFavoriteIcon size={33} fill="#fff" />
+        </ImageAddToFavoriteBtn>
         <ImageGalleryItemImg
           className="animate__animated animate__pulse"
           src={data.urls.regular}
@@ -31,7 +40,7 @@ export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
         />
         <ImageGalleryItemHoverWrapper>
           <ImageFooter>
-            <ImageFooterLeft href={data.user.profileUrl} target="_blank">
+            <ImageFooterWrapper href={data.user.profileUrl} target="_blank">
               <FooterLink
                 href={data.user.links.html}
                 target="_blank"
@@ -44,7 +53,6 @@ export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
 
                 <ImageFooterName>{data.user.username}</ImageFooterName>
               </FooterLink>
-              {/* <h4 className="image__footerLeftName">{data.user.username}</h4> */}
               <ImagefooterDownloadBtn
                 onClick={() => downloadImage({ data })}
                 variant="contained"
@@ -52,7 +60,7 @@ export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
               >
                 <ImageDownloadIcon size={33} fill="#fff" />
               </ImagefooterDownloadBtn>
-            </ImageFooterLeft>
+            </ImageFooterWrapper>
           </ImageFooter>
         </ImageGalleryItemHoverWrapper>
       </ImageGalleryItemLi>

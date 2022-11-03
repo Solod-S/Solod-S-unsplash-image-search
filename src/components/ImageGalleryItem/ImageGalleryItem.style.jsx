@@ -38,8 +38,7 @@ export const ImageGalleryItemHoverWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  /* transform: translateY(101%); */
-  /* padding: 63px 24px; */
+
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -57,8 +56,11 @@ export const ImageFooter = styled.div`
   justify-content: space-between;
   opacity: 1;
   z-index: 2;
+  @media screen and (max-width: 1000px) {
+    padding: 0.3rem;
+  }
 `;
-export const ImageFooterLeft = styled.div`
+export const ImageFooterWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
@@ -77,6 +79,10 @@ export const ImagefooterDownloadBtn = styled.button`
   bottom: 0;
   right: 0;
   transform: translate(-30px, -10px);
+  @media screen and (max-width: 1000px) {
+    bottom: -0.6rem;
+    right: -1.7rem;
+  }
 `;
 export const ImageDownloadIcon = styled(FiSave)`
   cursor: pointer;
@@ -92,6 +98,39 @@ export const ImageDownloadIcon = styled(FiSave)`
     }
   }
 `;
+export const ImageAddToFavoriteBtn = styled.button`
+  transition: fill 0.25s, opacity 0.25s, transform 0.25s;
+
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 6%;
+  right: 0;
+  @media screen and (max-width: 1000px) {
+    top: 1rem;
+    right: -1.7rem;
+  }
+  transform: translate(-30px, -10px);
+  ${ImageGalleryItemLi}:hover & {
+    opacity: 1;
+  }
+`;
+export const ImageAddToFavoriteIcon = styled(FiSave)`
+  cursor: pointer;
+  opacity: 0.6;
+
+  transition: fill 0.25s, opacity 0.25s, transform 0.25s;
+  ${ImageAddToFavoriteBtn}:hover & {
+    opacity: 1;
+    transform: scale(1.4);
+    fill: grey;
+    @media screen and (max-width: 700px) {
+      transform: scale(1.1);
+    }
+  }
+`;
+
 export const FooterLink = styled.a`
   display: flex;
   align-items: center;
