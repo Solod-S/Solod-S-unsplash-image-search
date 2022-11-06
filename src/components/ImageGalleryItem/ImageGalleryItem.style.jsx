@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FiSave } from 'react-icons/fi';
-import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
+import { HiOutlineHeart } from 'react-icons/hi';
 export const ImageGalleryItemLi = styled.li`
   position: relative;
   overflow: hidden;
