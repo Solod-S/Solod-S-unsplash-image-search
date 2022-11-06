@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 // import { lazy } from 'react';
 import HomePage from 'pages/HomePage/HomePage';
+import FavoritePage from 'pages/Favorite/FavoritePage';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
@@ -8,7 +9,7 @@ export const App = () => {
     <Routes>
       <Route end path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="favorite" element={<div>favorite</div>} />
+        <Route path="favorite" element={<FavoritePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

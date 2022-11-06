@@ -15,7 +15,13 @@ import {
   FooterLink,
   FooterImg,
 } from './ImageGalleryItem.style';
-export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
+export const ImageGalleryItem = ({
+  data,
+  setIndx,
+  indx,
+  downloadImage,
+  addToFovorite,
+}) => {
   const setIndxInModal = event => {
     if (event.target.nodeName !== 'DIV') {
       return;
@@ -27,7 +33,7 @@ export const ImageGalleryItem = ({ data, setIndx, indx, downloadImage }) => {
     <>
       <ImageGalleryItemLi animate__wobble onClick={setIndxInModal}>
         <ImageAddToFavoriteBtn
-          onClick={() => downloadImage({ data })}
+          onClick={() => addToFovorite(data.id)}
           variant="contained"
           size="small"
         >
