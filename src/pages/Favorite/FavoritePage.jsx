@@ -1,123 +1,53 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-import Searchbar from 'components/Searchbar/Searchbar';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
-import { ErrorMsg, AppWrapper } from './HomePage.styled';
-import { GetImages, getRandomImages } from 'components/services/api';
+import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
+import { getImageById } from 'components/services/api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
-import { ButtonPanel } from 'components/PaginationControlPanel/PaginationControlPanel';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 import { toast } from 'react-toastify';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  warmSetting,
-  successSettings,
-} from 'components/services/notificationSetting';
+import { warmSetting } from 'components/services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
-// import { Route, Routes, Navigate } from 'react-router-dom';
 
-function HomePage() {
+function FavoritePage() {
   const [images, setImages] = useState([]);
-  // const [searchQuery, setSearchQuery] = useState('');
+  const [localStrg, setLocalStrg] = useState(
+    JSON.parse(localStorage.getItem('myFavorite'))
+  );
   const [isLoading, setIsLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
-  const [page, setPage] = useState(1);
 
   const [error, setError] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [indx, setIndx] = useState(null);
-  const [totalPages, setTotalPages] = useState(1);
-  const firstRenderPassed = useRef(false);
 
-  async function FirstRender() {
-    async function fetch() {
-      setIsLoading(true);
+  async function renderFavorite() {
+    async function fetch(parsedId) {
+      const imagesResponse = await getImageById(parsedId);
+      const images = await imagesResponse.data;
 
-      const imagesResponse = await getRandomImages();
-      const images = imagesResponse.data;
-
-      const preparedImgs = images.map(
-        ({ id, urls, alt_description, links, user }) => ({
-          id,
-          urls,
-          alt_description,
-          links,
-          user,
-        })
-      );
-
-      setImages(prevState => [...preparedImgs]);
       setIsLoading(false);
+      return images;
     }
+
     try {
-      fetch();
+      const list = await Promise.all(localStrg.map(async id => fetch(id)));
+
+      setImages(list);
     } catch (error) {
       console.log(error, `Попробуйте перезагрузить страницу`);
       toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
       setError(error);
     }
   }
-
   useEffect(() => {
-    if (!firstRenderPassed.current) {
-      firstRenderPassed.current = true;
-      return;
-    }
-    if (!searchQuery) {
-      return;
-    }
+    renderFavorite();
+  }, [localStrg]);
 
-    async function fetch() {
-      setIsLoading(true);
-      const imagesResponse = await GetImages(searchQuery, page);
-      const images = imagesResponse.data.results;
-
-      const preparedImgs = images.map(
-        ({ id, urls, alt_description, links, user }) => ({
-          id,
-          urls,
-          alt_description,
-          links,
-          user,
-        })
-      );
-
-      setImages(prevState => [...preparedImgs]);
-      setIsLoading(false);
-      setTotalPages(Math.ceil(imagesResponse.data.total / 40));
-      if (page === 1) {
-        toast.success(
-          `Всего было найдено ${imagesResponse.data.total} картинок.`,
-          successSettings
-        );
-      }
-    }
-    try {
-      fetch();
-    } catch (error) {
-      console.log(error, `Попробуйте перезагрузить страницу`);
-      toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
-      setError(error);
-    }
-  }, [searchQuery, page]);
-
-  const handleFormSubmit = newSearchQuery => {
-    if (newSearchQuery === searchQuery) {
-      return;
-    }
-    if (newSearchQuery !== searchQuery) {
-      setImages([]);
-    }
-    setSearchQuery(newSearchQuery);
-    setPage(1);
-  };
-  const onLoadMore = async value => {
-    setPage(prevState => prevState + value);
-  };
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
   };
@@ -180,18 +110,18 @@ function HomePage() {
     const parsedStorage = JSON.parse(savedIds);
 
     if (!savedIds.includes(id)) {
-      console.log(`!`, savedIds);
       parsedStorage.push(id);
       localStorage.setItem('myFavorite', JSON.stringify(parsedStorage));
+      setLocalStrg(JSON.parse(localStorage.getItem('myFavorite')));
     } else {
       const filter = parsedStorage.filter(value => value !== id);
 
       localStorage.setItem('myFavorite', JSON.stringify(filter));
+      setLocalStrg(JSON.parse(localStorage.getItem('myFavorite')));
     }
   };
   return (
     <AppWrapper>
-      <Searchbar onImgsSeach={handleFormSubmit} />
       <ToastContainer
         transition={Flip}
         theme="dark"
@@ -218,13 +148,6 @@ function HomePage() {
         />
       )}
       {isLoading && <LoaderSpiner />}
-      <ButtonPanel
-        onLoadMore={onLoadMore}
-        currentPage={page}
-        images={images}
-        searchQuery={searchQuery}
-        totalPages={totalPages}
-      />
       {images.length > 11 && <ScrollChevron />}
       {showModal && (
         <Modal
@@ -240,4 +163,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default FavoritePage;

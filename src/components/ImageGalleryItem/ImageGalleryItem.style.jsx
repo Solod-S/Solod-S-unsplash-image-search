@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FiSave } from 'react-icons/fi';
+import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 export const ImageGalleryItemLi = styled.li`
   position: relative;
   overflow: hidden;
@@ -116,7 +117,7 @@ export const ImageAddToFavoriteBtn = styled.button`
     opacity: 1;
   }
 `;
-export const ImageAddToFavoriteIcon = styled(FiSave)`
+export const ImageAddToFavoriteIcon = styled(HiOutlineHeart)`
   cursor: pointer;
   opacity: 0.6;
 
