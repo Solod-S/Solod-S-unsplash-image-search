@@ -180,7 +180,6 @@ function HomePage() {
     const parsedStorage = JSON.parse(savedIds);
 
     if (!savedIds.includes(id)) {
-      console.log(`!`, savedIds);
       parsedStorage.push(id);
       localStorage.setItem('myFavorite', JSON.stringify(parsedStorage));
     } else {

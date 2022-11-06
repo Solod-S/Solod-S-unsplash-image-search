@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
@@ -44,10 +44,13 @@ function FavoritePage() {
       setError(error);
     }
   }
+  // useEffect(() => {
+  //   renderFavorite();
+  // }, [localStrg]);
   useEffect(() => {
     renderFavorite();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localStrg]);
-
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
   };
