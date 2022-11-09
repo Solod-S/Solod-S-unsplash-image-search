@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { useSelector } from 'react-redux';
 import {
   ImageAddToFavoriteBtn,
   ImageAddToFavoriteIcon,
@@ -22,6 +22,8 @@ export const ImageGalleryItem = ({
   downloadImage,
   addToFovorite,
 }) => {
+  const favorite = useSelector(state => state.favorite.favorite);
+
   const setIndxInModal = event => {
     if (event.target.nodeName !== 'DIV') {
       return;
@@ -32,13 +34,24 @@ export const ImageGalleryItem = ({
   return (
     <>
       <ImageGalleryItemLi animate__wobble onClick={setIndxInModal}>
-        <ImageAddToFavoriteBtn
-          onClick={() => addToFovorite(data.id)}
-          variant="contained"
-          size="small"
-        >
-          <ImageAddToFavoriteIcon size={33} fill="#fff" />
-        </ImageAddToFavoriteBtn>
+        {favorite.includes(data.id) ? (
+          <ImageAddToFavoriteBtn
+            onClick={() => addToFovorite(data.id)}
+            variant="contained"
+            size="small"
+          >
+            <ImageAddToFavoriteIcon size={33} fill="red" />
+          </ImageAddToFavoriteBtn>
+        ) : (
+          <ImageAddToFavoriteBtn
+            onClick={() => addToFovorite(data.id)}
+            variant="contained"
+            size="small"
+          >
+            <ImageAddToFavoriteIcon size={33} fill="#fff" />
+          </ImageAddToFavoriteBtn>
+        )}
+
         <ImageGalleryItemImg
           className="animate__animated animate__pulse"
           src={data.urls.regular}

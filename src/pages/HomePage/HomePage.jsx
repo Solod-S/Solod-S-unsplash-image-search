@@ -28,13 +28,14 @@ function HomePage({
   downloadImage,
   indx,
   showModal,
+  images,
+  setImages,
 }) {
-  const [images, setImages] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
   const [page, setPage] = useState(1);
-  const [error, setError] = useState(false);
+
   const [totalPages, setTotalPages] = useState(1);
   const firstRenderPassed = useRef(false);
 
@@ -108,6 +109,7 @@ function HomePage({
       toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
       setError(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, page]);
 
   const handleFormSubmit = newSearchQuery => {

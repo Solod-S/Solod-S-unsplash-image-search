@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
@@ -14,115 +14,46 @@ import 'react-toastify/dist/ReactToastify.css';
 import { warmSetting } from 'components/services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
 
-function FavoritePage() {
-  const [images, setImages] = useState([]);
-  const [localStrg, setLocalStrg] = useState(
-    JSON.parse(localStorage.getItem('myFavorite'))
-  );
+function FavoritePage({
+  addToFovorite,
+  toggleModal,
+  downloadImage,
+  downloadImageFromMain,
+  setIndxForModal,
+  changeIndx,
+  indx,
+  showModal,
+  images,
+  setImages,
+}) {
+  const favorite = useSelector(state => state.favorite.favorite);
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [error, setError] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [indx, setIndx] = useState(null);
-
   async function renderFavorite() {
+    setIsLoading(true);
     async function fetch(parsedId) {
       const imagesResponse = await getImageById(parsedId);
       const images = await imagesResponse.data;
 
-      setIsLoading(false);
       return images;
     }
 
     try {
-      const list = await Promise.all(localStrg.map(async id => fetch(id)));
-
+      const list = await Promise.all(favorite.map(async id => fetch(id)));
       setImages(list);
+      setIsLoading(false);
     } catch (error) {
       console.log(error, `Попробуйте перезагрузить страницу`);
       toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
       setError(error);
     }
   }
-  // useEffect(() => {
-  //   renderFavorite();
-  // }, [localStrg]);
   useEffect(() => {
     renderFavorite();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStrg]);
-  const toggleModal = () => {
-    setShowModal(prevState => !prevState);
-  };
+  }, [favorite]);
 
-  const setIndxForModal = imageLink => {
-    setIndx(imageLink);
-    toggleModal();
-  };
-  const changeIndx = value => {
-    setIndx(prevState => prevState + value);
-  };
-  const downloadImageFromMain = async ({ data }) => {
-    try {
-      const response = await fetch(data.urls.full);
-
-      const blob = await response.blob();
-
-      let url = window.URL.createObjectURL(blob);
-
-      let a = document.createElement('a');
-      a.style = 'display: none';
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = data.id;
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      alert('Something Went Wrong... Unable to Download Image');
-      console.log(error);
-    }
-  };
-  const downloadImage = async ({ data, indx }) => {
-    try {
-      const response = await fetch(data[indx].urls.full);
-
-      const blob = await response.blob();
-
-      let url = window.URL.createObjectURL(blob);
-
-      let a = document.createElement('a');
-      a.style = 'display: none';
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = data.id;
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      alert('Something Went Wrong... Unable to Download Image');
-      console.log(error);
-    }
-  };
-  const addToFovorite = id => {
-    if (!localStorage.getItem('myFavorite')) {
-      const LOCAL_STORAGE_DATA = [];
-      localStorage.setItem('myFavorite', JSON.stringify(LOCAL_STORAGE_DATA));
-    }
-    const savedIds = localStorage.getItem('myFavorite');
-    const parsedStorage = JSON.parse(savedIds);
-
-    if (!savedIds.includes(id)) {
-      parsedStorage.push(id);
-      localStorage.setItem('myFavorite', JSON.stringify(parsedStorage));
-      setLocalStrg(JSON.parse(localStorage.getItem('myFavorite')));
-    } else {
-      const filter = parsedStorage.filter(value => value !== id);
-
-      localStorage.setItem('myFavorite', JSON.stringify(filter));
-      setLocalStrg(JSON.parse(localStorage.getItem('myFavorite')));
-    }
-  };
   return (
     <AppWrapper>
       <ToastContainer
