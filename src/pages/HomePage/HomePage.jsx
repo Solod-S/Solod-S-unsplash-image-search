@@ -18,18 +18,24 @@ import {
   successSettings,
 } from 'components/services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
-// import { Route, Routes, Navigate } from 'react-router-dom';
 
-function HomePage() {
-  const [images, setImages] = useState([]);
-  // const [searchQuery, setSearchQuery] = useState('');
+function HomePage({
+  toggleModal,
+  setIndxForModal,
+  downloadImageFromMain,
+  addToFovorite,
+  changeIndx,
+  downloadImage,
+  indx,
+  showModal,
+  images,
+  setImages,
+}) {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
   const [page, setPage] = useState(1);
 
-  const [error, setError] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [indx, setIndx] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
   const firstRenderPassed = useRef(false);
 
@@ -103,6 +109,7 @@ function HomePage() {
       toast.warn('Упс... Попробуйте перезагрузить страницу!', warmSetting);
       setError(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, page]);
 
   const handleFormSubmit = newSearchQuery => {
@@ -118,76 +125,7 @@ function HomePage() {
   const onLoadMore = async value => {
     setPage(prevState => prevState + value);
   };
-  const toggleModal = () => {
-    setShowModal(prevState => !prevState);
-  };
 
-  const setIndxForModal = imageLink => {
-    setIndx(imageLink);
-    toggleModal();
-  };
-  const changeIndx = value => {
-    setIndx(prevState => prevState + value);
-  };
-  const downloadImageFromMain = async ({ data }) => {
-    try {
-      const response = await fetch(data.urls.full);
-
-      const blob = await response.blob();
-
-      let url = window.URL.createObjectURL(blob);
-
-      let a = document.createElement('a');
-      a.style = 'display: none';
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = data.id;
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      alert('Something Went Wrong... Unable to Download Image');
-      console.log(error);
-    }
-  };
-  const downloadImage = async ({ data, indx }) => {
-    try {
-      const response = await fetch(data[indx].urls.full);
-
-      const blob = await response.blob();
-
-      let url = window.URL.createObjectURL(blob);
-
-      let a = document.createElement('a');
-      a.style = 'display: none';
-      document.body.appendChild(a);
-      a.href = url;
-      a.download = data.id;
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      alert('Something Went Wrong... Unable to Download Image');
-      console.log(error);
-    }
-  };
-  const addToFovorite = id => {
-    if (!localStorage.getItem('myFavorite')) {
-      const LOCAL_STORAGE_DATA = [];
-      localStorage.setItem('myFavorite', JSON.stringify(LOCAL_STORAGE_DATA));
-    }
-    const savedIds = localStorage.getItem('myFavorite');
-    const parsedStorage = JSON.parse(savedIds);
-
-    if (!savedIds.includes(id)) {
-      parsedStorage.push(id);
-      localStorage.setItem('myFavorite', JSON.stringify(parsedStorage));
-    } else {
-      const filter = parsedStorage.filter(value => value !== id);
-
-      localStorage.setItem('myFavorite', JSON.stringify(filter));
-    }
-  };
   return (
     <AppWrapper>
       <Searchbar onImgsSeach={handleFormSubmit} />
