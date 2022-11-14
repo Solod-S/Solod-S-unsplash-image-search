@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import shortid from 'shortid';
 export const myFavoriteSlice = createSlice({
   name: 'contacts',
   initialState: [],
