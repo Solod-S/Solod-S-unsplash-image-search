@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setImageIndx } from 'components/redux/imageIndxSlice';
+import { setModalSlice } from 'components/redux/modalSlice';
 import {
   ImageAddToFavoriteBtn,
   ImageAddToFavoriteIcon,
@@ -22,13 +25,16 @@ export const ImageGalleryItem = ({
   downloadImage,
   addToFovorite,
 }) => {
-  const favorite = useSelector(state => state.favorite.favorite);
+  const dispatch = useDispatch();
+  const favorite = useSelector(state => state.favorite);
 
   const setIndxInModal = event => {
     if (event.target.nodeName !== 'DIV') {
       return;
     }
-    setIndx(indx);
+    // setIndx(indx);
+    dispatch(setImageIndx(indx));
+    dispatch(setModalSlice());
   };
 
   return (

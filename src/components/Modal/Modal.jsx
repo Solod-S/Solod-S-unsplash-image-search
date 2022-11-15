@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setModalSlice } from 'components/redux/modalSlice';
+import { changeImageIndx } from 'components/redux/imageIndxSlice';
 import {
   ModalOverlay,
   ModalModal,
@@ -14,23 +17,25 @@ import { object } from 'yup';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
+export function Modal({ data, downloadImage }) {
+  const dispatch = useDispatch();
+  const indx = useSelector(state => state.imageIndx);
   const scrollImgByKeyDown = event => {
     if (event.code === 'ArrowRight' && indx + 1 !== data.length) {
-      changeIndx(+1);
+      dispatch(changeImageIndx(+1));
     }
     if (event.code === 'ArrowLeft' && indx !== 0) {
-      changeIndx(-1);
+      dispatch(changeImageIndx(-1));
     }
   };
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
-      whenClose();
+      dispatch(setModalSlice());
     }
   };
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
-      whenClose();
+      dispatch(setModalSlice());
     }
   };
 
@@ -58,10 +63,18 @@ export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
         <ModalImg src={urls.regular} alt={alt_description} />
       </ModalModal>
       {indx !== 0 && (
-        <ShowPrevImg size={77} fill="#fff" onClick={() => changeIndx(-1)} />
+        <ShowPrevImg
+          size={77}
+          fill="#fff"
+          onClick={() => dispatch(changeImageIndx(-1))}
+        />
       )}
       {indx + 1 !== data.length && (
-        <ShowNextImg size={77} fill="#fff" onClick={() => changeIndx(+1)} />
+        <ShowNextImg
+          size={77}
+          fill="#fff"
+          onClick={() => dispatch(changeImageIndx(+1))}
+        />
       )}
     </ModalOverlay>,
     modalRoot
@@ -69,9 +82,6 @@ export function Modal({ whenClose, data, indx, changeIndx, downloadImage }) {
 }
 
 Modal.propTypes = {
-  whenClose: PropTypes.func.isRequired,
-  changeIndx: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(object).isRequired,
-  indx: PropTypes.number.isRequired,
   downloadImage: PropTypes.func.isRequired,
 };
