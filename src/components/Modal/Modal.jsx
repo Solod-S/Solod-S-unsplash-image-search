@@ -17,7 +17,7 @@ import { object } from 'yup';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function Modal({ data, downloadImage }) {
+export function Modal({ data, download }) {
   const dispatch = useDispatch();
   const indx = useSelector(state => state.imageIndx);
   const scrollImgByKeyDown = event => {
@@ -53,7 +53,7 @@ export function Modal({ data, downloadImage }) {
     <ModalOverlay onClick={handleBackDropClick}>
       <ModalModal className="animate__animated animate__pulse">
         <ModalBtnDownload
-          onClick={() => downloadImage({ data, indx })}
+          onClick={() => download(data, indx, 'inner')}
           variant="contained"
           size="small"
         >
@@ -83,5 +83,4 @@ export function Modal({ data, downloadImage }) {
 
 Modal.propTypes = {
   data: PropTypes.arrayOf(object).isRequired,
-  downloadImage: PropTypes.func.isRequired,
 };

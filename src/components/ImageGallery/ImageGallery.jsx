@@ -3,12 +3,7 @@ import { ImageGalleryList, ImageGalleryContainer } from './ImageGallery.styled';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({
-  images,
-  setIndx,
-  downloadImage,
-  addToFovorite,
-}) => {
+export const ImageGallery = ({ images, download, addToFovorite }) => {
   return (
     <ImageGalleryContainer>
       <ImageGalleryList>
@@ -16,9 +11,8 @@ export const ImageGallery = ({
           <ImageGalleryItem
             key={image.id}
             data={image}
-            setIndx={setIndx}
             indx={indx}
-            downloadImage={downloadImage}
+            download={download}
             addToFovorite={addToFovorite}
           />
         ))}
@@ -42,5 +36,4 @@ ImageGallery.propTypes = {
       alt_description: PropTypes.string,
     })
   ).isRequired,
-  setIndx: PropTypes.func.isRequired,
 };
