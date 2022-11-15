@@ -13,6 +13,7 @@ import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 import { toast } from 'react-toastify';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 import {
   warmSetting,
   successSettings,
@@ -20,22 +21,18 @@ import {
 import { Footer } from 'components/Footer/Footer';
 
 function HomePage({
-  toggleModal,
-  setIndxForModal,
-  downloadImageFromMain,
+  // downloadImageFromMain,
   addToFovorite,
-  changeIndx,
-  downloadImage,
-  indx,
-  showModal,
+  // downloadImage,
   images,
   setImages,
+  download,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
   const [page, setPage] = useState(1);
-
+  const openModal = useSelector(state => state.modal);
   const [totalPages, setTotalPages] = useState(1);
   const firstRenderPassed = useRef(false);
 
@@ -148,9 +145,7 @@ function HomePage({
       {images.length > 0 && (
         <ImageGallery
           images={images}
-          openModal={toggleModal}
-          setIndx={setIndxForModal}
-          downloadImage={downloadImageFromMain}
+          download={download}
           addToFovorite={addToFovorite}
         />
       )}
@@ -163,15 +158,7 @@ function HomePage({
         totalPages={totalPages}
       />
       {images.length > 11 && <ScrollChevron />}
-      {showModal && (
-        <Modal
-          whenClose={toggleModal}
-          data={images}
-          indx={indx}
-          changeIndx={changeIndx}
-          downloadImage={downloadImage}
-        />
-      )}
+      {openModal && <Modal data={images} download={download} />}
       <Footer>Copyright © Все права защищены.</Footer>
     </AppWrapper>
   );

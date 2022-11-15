@@ -14,17 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { warmSetting } from 'components/services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
 
-function FavoritePage({
-  addToFovorite,
-  toggleModal,
-  downloadImage,
-  downloadImageFromMain,
-  setIndxForModal,
-  changeIndx,
-  indx,
-  images,
-  setImages,
-}) {
+function FavoritePage({ addToFovorite, download, images, setImages }) {
   const favorite = useSelector(state => state.favorite);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -74,23 +64,13 @@ function FavoritePage({
       {images.length > 0 && (
         <ImageGallery
           images={images}
-          // openModal={toggleModal}
-          // setIndx={setIndxForModal}
-          downloadImage={downloadImageFromMain}
+          download={download}
           addToFovorite={addToFovorite}
         />
       )}
       {isLoading && <LoaderSpiner />}
       {images.length > 11 && <ScrollChevron />}
-      {openModal && (
-        <Modal
-          whenClose={toggleModal}
-          data={images}
-          indx={indx}
-          changeIndx={changeIndx}
-          downloadImage={downloadImage}
-        />
-      )}
+      {openModal && <Modal data={images} download={download} />}
       <Footer>Copyright © Все права защищены.</Footer>
     </AppWrapper>
   );

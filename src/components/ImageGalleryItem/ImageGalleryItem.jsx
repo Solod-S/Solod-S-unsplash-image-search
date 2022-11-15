@@ -18,13 +18,7 @@ import {
   FooterLink,
   FooterImg,
 } from './ImageGalleryItem.style';
-export const ImageGalleryItem = ({
-  data,
-  setIndx,
-  indx,
-  downloadImage,
-  addToFovorite,
-}) => {
+export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
   const dispatch = useDispatch();
   const favorite = useSelector(state => state.favorite);
 
@@ -32,7 +26,6 @@ export const ImageGalleryItem = ({
     if (event.target.nodeName !== 'DIV') {
       return;
     }
-    // setIndx(indx);
     dispatch(setImageIndx(indx));
     dispatch(setModalSlice());
   };
@@ -79,7 +72,7 @@ export const ImageGalleryItem = ({
                 <ImageFooterName>{data.user.username}</ImageFooterName>
               </FooterLink>
               <ImagefooterDownloadBtn
-                onClick={() => downloadImage({ data })}
+                onClick={() => download(data, '_', 'main')}
                 variant="contained"
                 size="small"
               >
@@ -105,5 +98,4 @@ ImageGalleryItem.propTypes = {
     }),
     alt_description: PropTypes.string,
   }),
-  setIndx: PropTypes.func.isRequired,
 };
