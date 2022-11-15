@@ -11,7 +11,7 @@ import { SharedLayout } from './SharedLayout/SharedLayout';
 import FavoritePage from 'pages/Favorite/FavoritePage';
 
 export const App = () => {
-  const favorite = useSelector(state => state.favorite.favorite);
+  const favorite = useSelector(state => state.favorite);
   const dispatch = useDispatch();
   const [images, setImages] = useState([]);
   const [indx, setIndx] = useState(null);
@@ -105,7 +105,6 @@ export const App = () => {
               downloadImageFromMain={downloadImageFromMain}
               changeIndx={changeIndx}
               indx={indx}
-              showModal={showModal}
               images={images}
               setImages={setImages}
               addToFovorite={addToFovorite}

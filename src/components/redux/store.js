@@ -10,9 +10,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 export const store = configureStore({
-  reducer: {
-    favorite: persistedContactReducer,
-  },
+  reducer: persistedContactReducer,
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -22,14 +22,13 @@ function FavoritePage({
   setIndxForModal,
   changeIndx,
   indx,
-  showModal,
   images,
   setImages,
 }) {
-  const favorite = useSelector(state => state.favorite.favorite);
+  const favorite = useSelector(state => state.favorite);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  const openModal = useSelector(state => state.modal);
   async function renderFavorite() {
     setIsLoading(true);
     async function fetch(parsedId) {
@@ -75,15 +74,15 @@ function FavoritePage({
       {images.length > 0 && (
         <ImageGallery
           images={images}
-          openModal={toggleModal}
-          setIndx={setIndxForModal}
+          // openModal={toggleModal}
+          // setIndx={setIndxForModal}
           downloadImage={downloadImageFromMain}
           addToFovorite={addToFovorite}
         />
       )}
       {isLoading && <LoaderSpiner />}
       {images.length > 11 && <ScrollChevron />}
-      {showModal && (
+      {openModal && (
         <Modal
           whenClose={toggleModal}
           data={images}
