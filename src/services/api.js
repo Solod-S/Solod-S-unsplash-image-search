@@ -7,9 +7,7 @@ const options = {
   per_page: 40,
 };
 
-// expected output: 0, 1 or 2
 const { key, per_page } = options;
-// axios.defaults.baseURL = 'https://api.unsplash.com/search/photos';
 axios.defaults.baseURL = 'https://api.unsplash.com/';
 
 export const GetImages = async (searchQuery, page) => {
@@ -20,14 +18,12 @@ export const GetImages = async (searchQuery, page) => {
   return response;
 };
 export const getRandomImages = async () => {
-  const response = await axios.get(
-    `photos/random/?client_id=${options.key}&count=30`
-  );
+  const response = await axios.get(`photos/random/?client_id=${key}&count=30`);
 
   return response;
 };
 export const getImageById = async id => {
-  const response = await axios.get(`photos/${id}/?client_id=${options.key}`);
+  const response = await axios.get(`photos/${id}/?client_id=${key}`);
 
   return response;
 };
