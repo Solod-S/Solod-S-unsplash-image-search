@@ -1,8 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import {
-  addToFavorite,
-  removeFromFavorite,
-} from 'components/redux/myFavoriteSlice';
+import { addToFavorite, removeFromFavorite } from 'redux/myFavoriteSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';

@@ -8,7 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/theme';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store, persistor } from 'components/redux/store.js';
+import { store, persistor } from 'redux/store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

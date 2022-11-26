@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
-import { getImageById } from 'components/services/api';
+import { getImageById } from 'services/api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
@@ -11,7 +11,7 @@ import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 import { toast } from 'react-toastify';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { warmSetting } from 'components/services/notificationSetting';
+import { warmSetting } from 'services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
 
 function FavoritePage({ addToFovorite, download, images, setImages }) {

@@ -4,7 +4,7 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 import { ErrorMsg, AppWrapper } from './HomePage.styled';
-import { GetImages, getRandomImages } from 'components/services/api';
+import { GetImages, getRandomImages } from 'services/api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { ButtonPanel } from 'components/PaginationControlPanel/PaginationControlPanel';
 import { Modal } from 'components/Modal/Modal';
@@ -14,10 +14,7 @@ import { toast } from 'react-toastify';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
-import {
-  warmSetting,
-  successSettings,
-} from 'components/services/notificationSetting';
+import { warmSetting, successSettings } from 'services/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
 
 function HomePage({
