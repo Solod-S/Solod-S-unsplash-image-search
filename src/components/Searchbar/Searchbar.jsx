@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  SearchBarContainer,
-  SearchBarHeader,
-  SearchBarForm,
-  SearchBarButton,
-  SearchBarInput,
-  // SearchBarLogo,
-  // SearchBarLinkLogo,
-} from './Searchbar.styled';
+import { Container, Header, Form, Button, Input } from './Searchbar.styled';
 import { IoIosSearch } from 'react-icons/io';
-// import logo from '../../img/Pixabay-logo.png';
 
 export default function Searchbar({ onImgsSeach }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,18 +20,10 @@ export default function Searchbar({ onImgsSeach }) {
   };
 
   return (
-    <SearchBarHeader>
-      <SearchBarContainer>
-        {/* <SearchBarLinkLogo
-        href="https://unsplash.com/documentation/"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-      >
-        <SearchBarLogo src={logo} />
-      </SearchBarLinkLogo> */}
-
-        <SearchBarForm onSubmit={handleSubeventmit}>
-          <SearchBarInput
+    <Header>
+      <Container>
+        <Form onSubmit={handleSubeventmit}>
+          <Input
             type="text"
             autoComplete="off"
             autoFocus
@@ -49,12 +32,12 @@ export default function Searchbar({ onImgsSeach }) {
             onChange={handleNameChange}
             placeholder="Search images and photos"
           />
-          <SearchBarButton type="submit">
+          <Button type="submit">
             <IoIosSearch size={18} fill="#444444" />
-          </SearchBarButton>
-        </SearchBarForm>
-      </SearchBarContainer>
-    </SearchBarHeader>
+          </Button>
+        </Form>
+      </Container>
+    </Header>
   );
 }
 

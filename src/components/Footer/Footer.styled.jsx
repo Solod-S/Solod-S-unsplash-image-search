@@ -8,10 +8,10 @@ export const FooterEl = styled.footer`
 
   text-align: end;
 `;
-export const CopyrightLink = styled.a`
+export const Link = styled.a`
   color: ${p => p.theme.colors.primaryText};
   text-decoration: underline;
 `;
-export const CopyrightText = styled.p`
+export const Text = styled.p`
   color: ${p => p.theme.colors.primaryText};
 `;

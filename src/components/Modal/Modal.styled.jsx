@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight, FiSave } from 'react-icons/fi';
 
-export const ModalOverlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@ export const ModalModal = styled.div`
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
 `;
-export const ModalImg = styled.img`
+export const Img = styled.img`
   max-height: 90vh;
   cursor: pointer;
   -khtml-user-select: none;
@@ -26,7 +26,7 @@ export const ModalImg = styled.img`
   -webkit-user-select: none;
   user-select: none;
 `;
-export const ShowPrevImg = styled(FiChevronLeft)`
+export const Prev = styled(FiChevronLeft)`
   position: absolute;
   left: 0;
   cursor: pointer;
@@ -36,7 +36,7 @@ export const ShowPrevImg = styled(FiChevronLeft)`
     fill: grey;
   }
 `;
-export const ShowNextImg = styled(FiChevronRight)`
+export const Next = styled(FiChevronRight)`
   position: absolute;
   right: 0;
   cursor: pointer;
@@ -46,19 +46,19 @@ export const ShowNextImg = styled(FiChevronRight)`
     fill: grey;
   }
 `;
-export const ModalBtnDownload = styled.button`
+export const Btn = styled.button`
   cursor: pointer;
   position: absolute;
   bottom: 0;
   right: 0;
   transform: translate(-30px, -10px);
 `;
-export const ModalIconDownload = styled(FiSave)`
+export const Download = styled(FiSave)`
   cursor: pointer;
   opacity: 0.6;
 
   transition: fill 0.25s, opacity 0.25s, transform 0.25s;
-  ${ModalBtnDownload}:hover & {
+  ${Btn}:hover & {
     opacity: 1;
     transform: scale(1.4);
     fill: grey;

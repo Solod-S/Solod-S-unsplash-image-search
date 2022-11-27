@@ -1,12 +1,12 @@
 import React from 'react';
-import { ImageGalleryList, ImageGalleryContainer } from './ImageGallery.styled';
+import { List, Container } from './ImageGallery.styled';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
 export const ImageGallery = ({ images, download, addToFovorite }) => {
   return (
-    <ImageGalleryContainer>
-      <ImageGalleryList>
+    <Container>
+      <List>
         {images.map((image, indx) => (
           <ImageGalleryItem
             key={image.id}
@@ -16,8 +16,8 @@ export const ImageGallery = ({ images, download, addToFovorite }) => {
             addToFovorite={addToFovorite}
           />
         ))}
-      </ImageGalleryList>
-    </ImageGalleryContainer>
+      </List>
+    </Container>
   );
 };
 

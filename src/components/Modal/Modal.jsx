@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setModalSlice } from 'redux/modalSlice';
-import { changeImageIndx } from 'redux/imageIndxSlice';
+import { setModalSlice } from 'redux/myModalSlice';
+import { changeImageIndx } from 'redux/myImageIndxSlice';
 import {
-  ModalOverlay,
+  Overlay,
   ModalModal,
-  ModalImg,
-  ShowPrevImg,
-  ShowNextImg,
-  ModalBtnDownload,
-  ModalIconDownload,
+  Img,
+  Prev,
+  Next,
+  Btn,
+  Download,
 } from './Modal.styled';
 import { createPortal } from 'react-dom';
 import { object } from 'yup';
@@ -50,33 +50,33 @@ export function Modal({ data, download }) {
   });
 
   return createPortal(
-    <ModalOverlay onClick={handleBackDropClick}>
+    <Overlay onClick={handleBackDropClick}>
       <ModalModal className="animate__animated animate__pulse">
-        <ModalBtnDownload
+        <Btn
           onClick={() => download(data, indx, 'inner')}
           variant="contained"
           size="small"
         >
-          <ModalIconDownload size={55} fill="#fff" />
-        </ModalBtnDownload>
+          <Download size={55} fill="#fff" />
+        </Btn>
 
-        <ModalImg src={urls.regular} alt={alt_description} />
+        <Img src={urls.regular} alt={alt_description} />
       </ModalModal>
       {indx !== 0 && (
-        <ShowPrevImg
+        <Prev
           size={77}
           fill="#fff"
           onClick={() => dispatch(changeImageIndx(-1))}
         />
       )}
       {indx + 1 !== data.length && (
-        <ShowNextImg
+        <Next
           size={77}
           fill="#fff"
           onClick={() => dispatch(changeImageIndx(+1))}
         />
       )}
-    </ModalOverlay>,
+    </Overlay>,
     modalRoot
   );
 }

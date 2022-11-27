@@ -1,9 +1,9 @@
 import axios from 'axios';
 const options = {
   key: '9tSb3ALXYO6Va-6WbKlq3Ox7oXjwofHL-Q5yPZ9X5uc',
-  query: '',
-  orientation: 'landscape',
-  page: 1,
+  // query: '',
+  // orientation: 'landscape',
+  // page: 1,
   per_page: 40,
 };
 

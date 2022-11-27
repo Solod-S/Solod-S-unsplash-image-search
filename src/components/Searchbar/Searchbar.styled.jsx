@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import img from '../../img/header.jpg';
 
-export const SearchBarHeader = styled.header`
+export const Header = styled.header`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
 `;
-export const SearchBarContainer = styled.div`
+export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -30,16 +30,16 @@ export const SearchBarContainer = styled.div`
   background-repeat: no-repeat;
 `;
 
-export const SearchBarPixabayLogo = styled.img`
+export const PixabayLogo = styled.img`
   width: 222px;
 `;
 
-export const SearchBarForm = styled.form`
+export const Form = styled.form`
   width: 100%;
   display: flex;
   justify-content: center;
 `;
-export const SearchBarInput = styled.input`
+export const Input = styled.input`
   width: 280px;
   border: none;
   border-top-left-radius: 4px;
@@ -47,7 +47,7 @@ export const SearchBarInput = styled.input`
   padding: ${p => p.theme.space[3]}px;
   transition: width 250ms linear;
 `;
-export const SearchBarButton = styled.button`
+export const Button = styled.button`
   align-items: center;
   justify-content: center;
   display: flex;
@@ -62,9 +62,9 @@ export const SearchBarButton = styled.button`
     background-color: ${p => p.theme.colors.hoverBtnColor};
   }
 `;
-export const SearchBarLogo = styled.img`
+export const Logo = styled.img`
   height: 30px;
 `;
-export const SearchBarLinkLogo = styled.a`
+export const LinkLogo = styled.a`
   cursor: pointer;
 `;

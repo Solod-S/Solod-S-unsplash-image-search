@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-export const ButtonLoadMore = styled.button`
+export const ButtonLM = styled.button`
   position: relative;
-  /* width: 125px; */
   align-items: center;
   margin: auto;
   margin-bottom: ${p => p.theme.space[4]}px;

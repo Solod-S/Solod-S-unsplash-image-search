@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const ImageGalleryContainer = styled.div`
+export const Container = styled.div`
   padding-top: ${p => p.theme.space[5]}px;
   padding-bottom: 12px;
 
@@ -11,7 +11,7 @@ export const ImageGalleryContainer = styled.div`
     padding-bottom: ${p => p.theme.space[1]}px;
   }
 `;
-export const ImageGalleryList = styled.ul`
+export const List = styled.ul`
   padding: 0 20px;
   width: 100%;
   max-width: 1300px;

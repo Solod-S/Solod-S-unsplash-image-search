@@ -125,7 +125,7 @@ export const ImageAddToFavoriteIcon = styled(HiOutlineHeart)`
   ${ImageAddToFavoriteBtn}:hover & {
     opacity: 1;
     transform: scale(1.4);
-    fill: grey;
+    fill: 'red';
     @media screen and (max-width: 700px) {
       transform: scale(1.1);
     }

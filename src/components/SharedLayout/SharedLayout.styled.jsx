@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-export const StyledLink = styled(NavLink)`
+export const Link = styled(NavLink)`
   position: relative;
   text-decoration: none;
   font-weight: 700;
@@ -31,13 +31,13 @@ export const StyledLink = styled(NavLink)`
   }
 `;
 
-export const StyledHeader = styled.header`
+export const Header = styled.header`
   height: 60px;
   padding: 0 10px;
   background-color: #444444;
 `;
 
-export const StyledNav = styled.nav`
+export const Nav = styled.nav`
   display: flex;
   align-items: baseline;
   justify-content: center;
