@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Header, Form, Button, Input } from './Searchbar.styled';
 import { IoIosSearch } from 'react-icons/io';
 
-export default function Searchbar({ onImgsSeach }) {
+export function Searchbar({ onImgsSeach }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSubeventmit = event => {

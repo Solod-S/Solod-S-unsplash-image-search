@@ -1,6 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 import '@csstools/normalize.css';
+import 'animate.css';
+import 'react-toastify/dist/ReactToastify.css';
 export const GlobalStyle = createGlobalStyle`
+
+.modal-root {
+  overflow: hidden;
+  height: 100vh;
+  /* overflow-y:hidden; */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

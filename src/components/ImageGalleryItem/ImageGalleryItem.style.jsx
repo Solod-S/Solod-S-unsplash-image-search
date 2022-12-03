@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FiSave } from 'react-icons/fi';
 import { HiOutlineHeart } from 'react-icons/hi';
-export const ImageGalleryItemLi = styled.li`
+export const GalleryItemLi = styled.li`
   position: relative;
   overflow: hidden;
   color: ${p => p.theme.colors.primaryText};
@@ -24,16 +24,16 @@ export const ImageGalleryItemLi = styled.li`
     z-index: 5;
   }
 `;
-export const ImageGalleryItemImg = styled.img`
+export const GalleryItemImg = styled.img`
   width: 100%;
   height: 100%;
   transition: transform 0.25s;
 
-  ${ImageGalleryItemLi}:hover & {
+  ${GalleryItemLi}:hover & {
     transform: scale(1.2);
   }
 `;
-export const ImageGalleryItemHoverWrapper = styled.div`
+export const GalleryItemHoverWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -43,11 +43,11 @@ export const ImageGalleryItemHoverWrapper = styled.div`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  ${ImageGalleryItemLi}:hover & {
+  ${GalleryItemLi}:hover & {
     opacity: 1;
   }
 `;
-export const ImageFooter = styled.div`
+export const Footer = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -61,20 +61,20 @@ export const ImageFooter = styled.div`
     padding: 0.3rem;
   }
 `;
-export const ImageFooterWrapper = styled.div`
+export const FooterWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
   text-decoration: none;
 `;
-export const ImageFooterName = styled.h4`
+export const FooterName = styled.h4`
   font-size: 16px;
   color: white;
   @media screen and (max-width: 700px) {
     display: none;
   }
 `;
-export const ImagefooterDownloadBtn = styled.button`
+export const FooterDownloadBtn = styled.button`
   cursor: pointer;
   position: absolute;
   bottom: 0;
@@ -85,12 +85,12 @@ export const ImagefooterDownloadBtn = styled.button`
     right: -1.7rem;
   }
 `;
-export const ImageDownloadIcon = styled(FiSave)`
+export const DownloadIcon = styled(FiSave)`
   cursor: pointer;
   opacity: 0.6;
 
   transition: fill 0.25s, opacity 0.25s, transform 0.25s;
-  ${ImagefooterDownloadBtn}:hover & {
+  ${FooterDownloadBtn}:hover & {
     opacity: 1;
     transform: scale(1.4);
     fill: grey;
@@ -99,7 +99,7 @@ export const ImageDownloadIcon = styled(FiSave)`
     }
   }
 `;
-export const ImageAddToFavoriteBtn = styled.button`
+export const AddToFavoriteBtn = styled.button`
   transition: fill 0.25s, opacity 0.25s, transform 0.25s;
 
   z-index: 1;
@@ -113,16 +113,16 @@ export const ImageAddToFavoriteBtn = styled.button`
     right: -1.7rem;
   }
   transform: translate(-30px, -10px);
-  ${ImageGalleryItemLi}:hover & {
+  ${GalleryItemLi}:hover & {
     opacity: 1;
   }
 `;
-export const ImageAddToFavoriteIcon = styled(HiOutlineHeart)`
+export const AddToFavoriteIcon = styled(HiOutlineHeart)`
   cursor: pointer;
   opacity: 0.6;
 
   transition: fill 0.25s, opacity 0.25s, transform 0.25s;
-  ${ImageAddToFavoriteBtn}:hover & {
+  ${AddToFavoriteBtn}:hover & {
     opacity: 1;
     transform: scale(1.4);
     fill: 'red';

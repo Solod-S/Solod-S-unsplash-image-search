@@ -1,5 +1,5 @@
-const success = {
-  position: 'bottom-right',
+export const successSettings = {
+  position: 'bottom-left',
   autoClose: 1000,
   hideProgressBar: false,
   closeOnClick: true,
@@ -7,8 +7,8 @@ const success = {
   draggable: false,
   progress: undefined,
 };
-const warn = {
-  position: 'bottom-right',
+export const warmSetting = {
+  position: 'bottom-left',
   autoClose: 1000,
   hideProgressBar: false,
   closeOnClick: true,
@@ -16,5 +16,3 @@ const warn = {
   draggable: false,
   progress: undefined,
 };
-
-export const notifictation = { success, warn };

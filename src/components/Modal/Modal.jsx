@@ -4,6 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setModalSlice } from 'redux/myModalSlice';
 import { changeImageIndx } from 'redux/myImageIndxSlice';
 import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
+import {
   Overlay,
   ModalModal,
   Img,
@@ -31,11 +36,13 @@ export function Modal({ data, download }) {
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
       dispatch(setModalSlice());
+      document.querySelector('body').classList.remove('modal-root');
     }
   };
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
       dispatch(setModalSlice());
+      document.querySelector('body').classList.remove('modal-root');
     }
   };
 

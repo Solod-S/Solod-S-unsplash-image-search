@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
-import 'animate.css';
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
-import { getImageById } from 'services/api';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 import { toast } from 'react-toastify';
 import { ToastContainer, Flip } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { warmSetting } from 'services/notificationSetting';
+import { warmSetting } from 'services/others/toast/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
+import rest from 'services/rest';
 
 function FavoritePage({ addToFovorite, download, images, setImages }) {
+  const { unsplash } = rest;
   const favorite = useSelector(state => state.favorite);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,12 +20,10 @@ function FavoritePage({ addToFovorite, download, images, setImages }) {
   async function renderFavorite() {
     setIsLoading(true);
     async function fetch(parsedId) {
-      const imagesResponse = await getImageById(parsedId);
+      const imagesResponse = await unsplash.getById(parsedId);
       const images = await imagesResponse.data;
-
       return images;
     }
-
     try {
       const list = await Promise.all(favorite.map(async id => fetch(id)));
       setImages(list);

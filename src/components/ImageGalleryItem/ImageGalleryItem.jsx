@@ -5,16 +5,16 @@ import { useDispatch } from 'react-redux';
 import { setImageIndx } from 'redux/myImageIndxSlice';
 import { setModalSlice } from 'redux/myModalSlice';
 import {
-  ImageAddToFavoriteBtn,
-  ImageAddToFavoriteIcon,
-  ImageGalleryItemLi,
-  ImageGalleryItemImg,
-  ImageGalleryItemHoverWrapper,
-  ImageFooter,
-  ImageFooterWrapper,
-  ImageFooterName,
-  ImagefooterDownloadBtn,
-  ImageDownloadIcon,
+  AddToFavoriteBtn,
+  AddToFavoriteIcon,
+  GalleryItemLi,
+  GalleryItemImg,
+  GalleryItemHoverWrapper,
+  Footer,
+  FooterWrapper,
+  FooterName,
+  FooterDownloadBtn,
+  DownloadIcon,
   FooterLink,
   FooterImg,
 } from './ImageGalleryItem.style';
@@ -28,37 +28,38 @@ export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
     }
     dispatch(setImageIndx(indx));
     dispatch(setModalSlice());
+    document.querySelector('body').classList.add('modal-root');
   };
 
   return (
     <>
-      <ImageGalleryItemLi animate__wobble onClick={setIndxInModal}>
+      <GalleryItemLi animate__wobble onClick={setIndxInModal}>
         {favorite.includes(data.id) ? (
-          <ImageAddToFavoriteBtn
+          <AddToFavoriteBtn
             onClick={() => addToFovorite(data.id)}
             variant="contained"
             size="small"
           >
-            <ImageAddToFavoriteIcon size={33} fill="red" />
-          </ImageAddToFavoriteBtn>
+            <AddToFavoriteIcon size={33} fill="red" />
+          </AddToFavoriteBtn>
         ) : (
-          <ImageAddToFavoriteBtn
+          <AddToFavoriteBtn
             onClick={() => addToFovorite(data.id)}
             variant="contained"
             size="small"
           >
-            <ImageAddToFavoriteIcon size={33} fill="#fff" />
-          </ImageAddToFavoriteBtn>
+            <AddToFavoriteIcon size={33} fill="#fff" />
+          </AddToFavoriteBtn>
         )}
 
-        <ImageGalleryItemImg
+        <GalleryItemImg
           className="animate__animated animate__pulse"
           src={data.urls.regular}
           alt={data.alt_description}
         />
-        <ImageGalleryItemHoverWrapper>
-          <ImageFooter>
-            <ImageFooterWrapper href={data.user.profileUrl} target="_blank">
+        <GalleryItemHoverWrapper>
+          <Footer>
+            <FooterWrapper href={data.user.profileUrl} target="_blank">
               <FooterLink
                 href={data.user.links.html}
                 target="_blank"
@@ -69,19 +70,19 @@ export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
                   alt={data.alt_description}
                 />
 
-                <ImageFooterName>{data.user.username}</ImageFooterName>
+                <FooterName>{data.user.username}</FooterName>
               </FooterLink>
-              <ImagefooterDownloadBtn
+              <FooterDownloadBtn
                 onClick={() => download(data, '_', 'main')}
                 variant="contained"
                 size="small"
               >
-                <ImageDownloadIcon size={33} fill="#fff" />
-              </ImagefooterDownloadBtn>
-            </ImageFooterWrapper>
-          </ImageFooter>
-        </ImageGalleryItemHoverWrapper>
-      </ImageGalleryItemLi>
+                <DownloadIcon size={33} fill="#fff" />
+              </FooterDownloadBtn>
+            </FooterWrapper>
+          </Footer>
+        </GalleryItemHoverWrapper>
+      </GalleryItemLi>
     </>
   );
 };

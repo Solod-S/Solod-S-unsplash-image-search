@@ -3,8 +3,8 @@ import { addToFavorite, removeFromFavorite } from 'redux/myFavoriteSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import HomePage from 'pages/HomePage/HomePage';
 import { SharedLayout } from '../SharedLayout/SharedLayout';
+import HomePage from 'pages/HomePage/HomePage';
 import FavoritePage from 'pages/FavoritePage/FavoritePage';
 
 export const App = () => {
