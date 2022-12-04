@@ -14,6 +14,7 @@ import {
 } from './Modal.styled';
 import { createPortal } from 'react-dom';
 import { object } from 'yup';
+import scroll from 'operations/scroll';
 const modalRoot = document.querySelector('#modal-root');
 
 export function Modal({ data, download }) {
@@ -30,21 +31,20 @@ export function Modal({ data, download }) {
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
       dispatch(setModal());
-      document.querySelector('body').classList.remove('modal-root');
     }
   };
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
       dispatch(setModal());
-      document.querySelector('body').classList.remove('modal-root');
     }
   };
-  console.log(data);
   const { urls, alt_description } = data[indx];
   useEffect(() => {
+    scroll.enable();
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keydown', scrollImgByKeyDown);
     return () => {
+      scroll.disable();
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keydown', scrollImgByKeyDown);
     };

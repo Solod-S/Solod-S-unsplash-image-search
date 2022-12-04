@@ -4,10 +4,7 @@ import 'animate.css';
 import 'react-toastify/dist/ReactToastify.css';
 export const GlobalStyle = createGlobalStyle`
 
-.modal-root {
-  overflow-y:auto;
-  /* height: 100vh; */
-}
+
 
 body {
   margin: 0;

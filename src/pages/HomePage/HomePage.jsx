@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { ErrorMsg, AppWrapper } from './HomePage.styled';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
-import { ButtonPanel } from 'components/PaginationControlPanel/PaginationControlPanel';
+import { PaginationBtns } from 'components/PaginationBtns/PaginationBtns';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
@@ -14,7 +14,7 @@ import rest from 'services/rest';
 import services from 'services/others';
 import download from 'operations/download';
 import PropTypes from 'prop-types';
-
+import scroll from 'operations/scroll';
 function HomePage({ addToFovorite, images, setImages }) {
   const { unsplash } = rest;
   const { toastSettings } = services;
@@ -66,28 +66,30 @@ function HomePage({ addToFovorite, images, setImages }) {
     }
 
     async function fetch() {
-      setIsLoading(true);
-      const imagesResponse = await unsplash.getAll(searchQuery, page);
-      const images = imagesResponse.data.results;
-
-      const preparedImgs = images.map(
-        ({ id, urls, alt_description, links, user }) => ({
-          id,
-          urls,
-          alt_description,
-          links,
-          user,
-        })
-      );
-
-      setImages(prevState => [...preparedImgs]);
-      setIsLoading(false);
-      setTotalPages(Math.ceil(imagesResponse.data.total / 40));
-      if (page === 1) {
-        toast.success(
-          `Всего было найдено ${imagesResponse.data.total} картинок.`,
-          toastSettings.success
+      try {
+        setIsLoading(true);
+        const imagesResponse = await unsplash.getAll(searchQuery, page);
+        const images = imagesResponse.data.results;
+        const preparedImgs = images.map(
+          ({ id, urls, alt_description, links, user }) => ({
+            id,
+            urls,
+            alt_description,
+            links,
+            user,
+          })
         );
+        setImages(prevState => [...preparedImgs]);
+        setIsLoading(false);
+        setTotalPages(Math.ceil(imagesResponse.data.total / 40));
+        if (page === 1) {
+          toast.success(
+            `Всего было найдено ${imagesResponse.data.total} картинок.`,
+            toastSettings.success
+          );
+        }
+      } catch (error) {
+        setIsLoading(false);
       }
     }
     try {
@@ -115,10 +117,7 @@ function HomePage({ addToFovorite, images, setImages }) {
   };
   const onLoadMore = async value => {
     setPage(prevState => prevState + value);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    scroll.goUp();
   };
 
   return (
@@ -148,13 +147,16 @@ function HomePage({ addToFovorite, images, setImages }) {
         />
       )}
       {isLoading && <LoaderSpiner />}
-      <ButtonPanel
-        onLoadMore={onLoadMore}
-        currentPage={page}
-        images={images}
-        searchQuery={searchQuery}
-        totalPages={totalPages}
-      />
+      {images.length && (
+        <PaginationBtns
+          onLoadMore={onLoadMore}
+          currentPage={page}
+          images={images}
+          searchQuery={searchQuery}
+          totalPages={totalPages}
+        />
+      )}
+
       {images.length > 11 && <ScrollChevron />}
       {openModal && <Modal data={images} download={download} />}
       <Footer>Copyright © Все права защищены.</Footer>

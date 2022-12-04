@@ -8,8 +8,8 @@ import {
   NextPageIcon,
   Wrapper,
   CurrentPage,
-} from './PaginationControlPanel.styled';
-export const ButtonPanel = ({
+} from './PaginationBtnsl.styled';
+export const PaginationBtns = ({
   onLoadMore,
   currentPage,
   searchQuery,
@@ -36,7 +36,7 @@ export const ButtonPanel = ({
     </Wrapper>
   );
 };
-ButtonPanel.propTypes = {
+PaginationBtns.propTypes = {
   onLoadMore: PropTypes.func.isRequired,
   searchQuery: PropTypes.oneOfType([
     PropTypes.string.isRequired,
