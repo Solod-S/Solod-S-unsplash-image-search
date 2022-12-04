@@ -28,7 +28,7 @@ function FavoritePage({ addToFovorite, images, setImages }) {
     }
     try {
       const list = await Promise.all(favorite.map(async id => fetch(id)));
-      const preparedImgs = list.map(
+      const preparedImgs = await list.map(
         ({ id, urls, alt_description, links, user }) => ({
           id,
           urls,
@@ -37,7 +37,7 @@ function FavoritePage({ addToFovorite, images, setImages }) {
           user,
         })
       );
-      setImages(prevState => [...preparedImgs]);
+      await setImages(preparedImgs);
       setIsLoading(false);
     } catch (error) {
       console.log(error, `Попробуйте перезагрузить страницу`);

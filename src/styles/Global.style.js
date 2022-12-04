@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export const GlobalStyle = createGlobalStyle`
 
 .modal-root {
-  overflow-y:hidden;
+  overflow-y:auto;
+  /* height: 100vh; */
 }
 
 body {

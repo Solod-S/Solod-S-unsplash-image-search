@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setModal } from 'redux/slices/modalSlice';
-import { setImgIndx } from 'redux/slices/imgIndxSlice';
+import { changeImgIndx } from 'redux/slices/imgIndxSlice';
 import {
   Overlay,
   ModalModal,
@@ -21,10 +21,10 @@ export function Modal({ data, download }) {
   const indx = useSelector(state => state.imgIndx);
   const scrollImgByKeyDown = event => {
     if (event.code === 'ArrowRight' && indx + 1 !== data.length) {
-      dispatch(setImgIndx(+1));
+      dispatch(changeImgIndx(+1));
     }
     if (event.code === 'ArrowLeft' && indx !== 0) {
-      dispatch(setImgIndx(-1));
+      dispatch(changeImgIndx(-1));
     }
   };
   const handleKeyDown = event => {
@@ -39,7 +39,7 @@ export function Modal({ data, download }) {
       document.querySelector('body').classList.remove('modal-root');
     }
   };
-
+  console.log(data);
   const { urls, alt_description } = data[indx];
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -64,10 +64,18 @@ export function Modal({ data, download }) {
         <Img src={urls.regular} alt={alt_description} />
       </ModalModal>
       {indx !== 0 && (
-        <Prev size={77} fill="#fff" onClick={() => dispatch(setImgIndx(-1))} />
+        <Prev
+          size={77}
+          fill="#fff"
+          onClick={() => dispatch(changeImgIndx(-1))}
+        />
       )}
       {indx + 1 !== data.length && (
-        <Next size={77} fill="#fff" onClick={() => dispatch(setImgIndx(+1))} />
+        <Next
+          size={77}
+          fill="#fff"
+          onClick={() => dispatch(changeImgIndx(+1))}
+        />
       )}
     </Overlay>,
     modalRoot
