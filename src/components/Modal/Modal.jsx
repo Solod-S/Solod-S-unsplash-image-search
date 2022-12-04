@@ -14,7 +14,6 @@ import {
 } from './Modal.styled';
 import { createPortal } from 'react-dom';
 import { object } from 'yup';
-
 const modalRoot = document.querySelector('#modal-root');
 
 export function Modal({ data, download }) {

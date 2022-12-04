@@ -115,6 +115,10 @@ function HomePage({ addToFovorite, images, setImages }) {
   };
   const onLoadMore = async value => {
     setPage(prevState => prevState + value);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   return (

@@ -78,6 +78,7 @@ function FavoritePage({ addToFovorite, images, setImages }) {
       {isLoading && <LoaderSpiner />}
       {images.length > 11 && <ScrollChevron />}
       {openModal && <Modal data={images} download={download} />}
+
       <Footer>Copyright © Все права защищены.</Footer>
     </AppWrapper>
   );
