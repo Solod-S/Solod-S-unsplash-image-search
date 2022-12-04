@@ -13,7 +13,7 @@ import {
   Download,
 } from './Modal.styled';
 import { createPortal } from 'react-dom';
-import { object } from 'yup';
+// import { object } from 'yup';
 import scroll from 'operations/scroll';
 const modalRoot = document.querySelector('#modal-root');
 
@@ -58,24 +58,16 @@ export function Modal({ data, download }) {
           variant="contained"
           size="small"
         >
-          <Download size={55} fill="#fff" />
+          <Download size={55} />
         </Btn>
 
         <Img src={urls.regular} alt={alt_description} />
       </ModalModal>
       {indx !== 0 && (
-        <Prev
-          size={77}
-          fill="#fff"
-          onClick={() => dispatch(changeImgIndx(-1))}
-        />
+        <Prev size={77} onClick={() => dispatch(changeImgIndx(-1))} />
       )}
       {indx + 1 !== data.length && (
-        <Next
-          size={77}
-          fill="#fff"
-          onClick={() => dispatch(changeImgIndx(+1))}
-        />
+        <Next size={77} onClick={() => dispatch(changeImgIndx(+1))} />
       )}
     </Overlay>,
     modalRoot
@@ -83,5 +75,5 @@ export function Modal({ data, download }) {
 }
 
 Modal.propTypes = {
-  data: PropTypes.arrayOf(object).isRequired,
+  data: PropTypes.array.isRequired,
 };

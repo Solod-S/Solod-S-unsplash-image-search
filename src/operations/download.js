@@ -2,6 +2,7 @@ const download = async (data, indx, action) => {
   switch (action) {
     case 'main':
       try {
+        const { id } = data;
         const response = await fetch(data.urls.full);
         const blob = await response.blob();
         let url = window.URL.createObjectURL(blob);
@@ -9,7 +10,7 @@ const download = async (data, indx, action) => {
         a.style = 'display: none';
         document.body.appendChild(a);
         a.href = url;
-        a.download = data.id;
+        a.download = id;
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);
@@ -20,6 +21,7 @@ const download = async (data, indx, action) => {
       break;
     case 'inner':
       try {
+        const { id } = data[indx];
         const response = await fetch(data[indx].urls.full);
         const blob = await response.blob();
         let url = window.URL.createObjectURL(blob);
@@ -27,7 +29,7 @@ const download = async (data, indx, action) => {
         a.style = 'display: none';
         document.body.appendChild(a);
         a.href = url;
-        a.download = data.id;
+        a.download = id;
         a.click();
         a.remove();
         window.URL.revokeObjectURL(url);

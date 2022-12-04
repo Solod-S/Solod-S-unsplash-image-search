@@ -31,9 +31,10 @@ export const Prev = styled(FiChevronLeft)`
   left: 0;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
+  color: white;
+
   :hover {
     transform: scale(1.4);
-    fill: grey;
   }
 `;
 export const Next = styled(FiChevronRight)`
@@ -41,9 +42,10 @@ export const Next = styled(FiChevronRight)`
   right: 0;
   cursor: pointer;
   transition: fill 0.25s, transform 0.25s;
+  color: white;
+
   :hover {
     transform: scale(1.4);
-    fill: grey;
   }
 `;
 export const Btn = styled.button`
@@ -56,11 +58,11 @@ export const Btn = styled.button`
 export const Download = styled(FiSave)`
   cursor: pointer;
   opacity: 0.6;
-
+  fill: white;
   transition: fill 0.25s, opacity 0.25s, transform 0.25s;
   ${Btn}:hover & {
     opacity: 1;
-    transform: scale(1.4);
+    transform: scale(1.2);
     fill: grey;
   }
 `;
