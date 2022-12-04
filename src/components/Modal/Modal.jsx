@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setModalSlice } from 'redux/myModalSlice';
-import { changeImageIndx } from 'redux/myImageIndxSlice';
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from 'body-scroll-lock';
+import { setModalSlice } from 'redux/slices/myModalSlice';
+import { changeImageIndx } from 'redux/slices/myImageIndxSlice';
 import {
   Overlay,
   ModalModal,

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setImageIndx } from 'redux/myImageIndxSlice';
-import { setModalSlice } from 'redux/myModalSlice';
+import { setImageIndx } from 'redux/slices/myImageIndxSlice';
+import { setModalSlice } from 'redux/slices/myModalSlice';
 import {
   AddToFavoriteBtn,
   AddToFavoriteIcon,

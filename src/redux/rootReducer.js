@@ -1,10 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import { myFavoriteSlice } from './slices/myFavoriteSlice';
+import { imageIndx } from './slices/myImageIndxSlice';
+import { modalSlice } from './slices/myModalSlice';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import { myFavoriteSlice } from './myFavoriteSlice';
-import { imageIndx } from './myImageIndxSlice';
-import { modalSlice } from './myModalSlice';
-
 const persistConfig = {
   key: 'root',
   storage,
