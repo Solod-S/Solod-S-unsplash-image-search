@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-export const myFavoriteSlice = createSlice({
+export const favoriteSlice = createSlice({
   name: 'contacts',
   initialState: [],
   reducers: {
@@ -12,4 +12,4 @@ export const myFavoriteSlice = createSlice({
   },
 });
 
-export const { addToFavorite, removeFromFavorite } = myFavoriteSlice.actions;
+export const { addToFavorite, removeFromFavorite } = favoriteSlice.actions;

@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { myFavoriteSlice } from './slices/myFavoriteSlice';
-import { imageIndx } from './slices/myImageIndxSlice';
-import { modalSlice } from './slices/myModalSlice';
+import { favoriteSlice } from './slices/favoriteSlice';
+import { imgIndx } from './slices/imgIndxSlice';
+import { modalSlice } from './slices/modalSlice';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 const persistConfig = {
@@ -11,8 +11,8 @@ const persistConfig = {
 };
 
 export const rootReduser = combineReducers({
-  favorite: myFavoriteSlice.reducer,
-  imageIndx: imageIndx.reducer,
+  favorite: favoriteSlice.reducer,
+  imgIndx: imgIndx.reducer,
   modal: modalSlice.reducer,
 });
 

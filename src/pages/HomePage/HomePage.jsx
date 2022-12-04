@@ -12,8 +12,10 @@ import { useSelector } from 'react-redux';
 import { Footer } from 'components/Footer/Footer';
 import rest from 'services/rest';
 import services from 'services/others';
+import download from 'operations/download';
+import PropTypes from 'prop-types';
 
-function HomePage({ addToFovorite, images, setImages, download }) {
+function HomePage({ addToFovorite, images, setImages }) {
   const { unsplash } = rest;
   const { toastSettings } = services;
   const [isLoading, setIsLoading] = useState(false);
@@ -155,5 +157,18 @@ function HomePage({ addToFovorite, images, setImages, download }) {
     </AppWrapper>
   );
 }
+
+HomePage.propTypes = {
+  addToFovorite: PropTypes.func.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      urls: PropTypes.object.isRequired,
+      links: PropTypes.object.isRequired,
+      user: PropTypes.object.isRequired,
+    })
+  ).isRequired,
+  setImages: PropTypes.func.isRequired,
+};
 
 export default HomePage;

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setImageIndx } from 'redux/slices/myImageIndxSlice';
-import { setModalSlice } from 'redux/slices/myModalSlice';
+import { setImgIndx } from 'redux/slices/imgIndxSlice';
+import { setModal } from 'redux/slices/modalSlice';
 import {
   AddToFavoriteBtn,
   AddToFavoriteIcon,
@@ -26,8 +26,8 @@ export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
     if (event.target.nodeName !== 'DIV') {
       return;
     }
-    dispatch(setImageIndx(indx));
-    dispatch(setModalSlice());
+    dispatch(setImgIndx(indx));
+    dispatch(setModal());
     document.querySelector('body').classList.add('modal-root');
   };
 

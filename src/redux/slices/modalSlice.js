@@ -3,10 +3,10 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState: false,
   reducers: {
-    setModalSlice(state, _) {
+    setModal(state, _) {
       return (state = !state);
     },
   },
 });
 
-export const { setModalSlice } = modalSlice.actions;
+export const { setModal } = modalSlice.actions;

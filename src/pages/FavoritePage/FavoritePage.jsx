@@ -10,8 +10,10 @@ import { ToastContainer, Flip } from 'react-toastify';
 import { warmSetting } from 'services/others/toast/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
 import rest from 'services/rest';
+import download from 'operations/download';
+import PropTypes from 'prop-types';
 
-function FavoritePage({ addToFovorite, download, images, setImages }) {
+function FavoritePage({ addToFovorite, images, setImages }) {
   const { unsplash } = rest;
   const favorite = useSelector(state => state.favorite);
   const [error, setError] = useState(false);
@@ -26,7 +28,16 @@ function FavoritePage({ addToFovorite, download, images, setImages }) {
     }
     try {
       const list = await Promise.all(favorite.map(async id => fetch(id)));
-      setImages(list);
+      const preparedImgs = list.map(
+        ({ id, urls, alt_description, links, user }) => ({
+          id,
+          urls,
+          alt_description,
+          links,
+          user,
+        })
+      );
+      setImages(prevState => [...preparedImgs]);
       setIsLoading(false);
     } catch (error) {
       console.log(error, `Попробуйте перезагрузить страницу`);
@@ -71,5 +82,18 @@ function FavoritePage({ addToFovorite, download, images, setImages }) {
     </AppWrapper>
   );
 }
+
+FavoritePage.propTypes = {
+  addToFovorite: PropTypes.func.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      urls: PropTypes.object.isRequired,
+      links: PropTypes.object.isRequired,
+      user: PropTypes.object.isRequired,
+    })
+  ).isRequired,
+  setImages: PropTypes.func.isRequired,
+};
 
 export default FavoritePage;

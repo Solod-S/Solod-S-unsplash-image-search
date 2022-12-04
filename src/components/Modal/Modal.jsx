@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setModalSlice } from 'redux/slices/myModalSlice';
-import { changeImageIndx } from 'redux/slices/myImageIndxSlice';
+import { setModal } from 'redux/slices/modalSlice';
+import { setImgIndx } from 'redux/slices/imgIndxSlice';
 import {
   Overlay,
   ModalModal,
@@ -19,24 +19,24 @@ const modalRoot = document.querySelector('#modal-root');
 
 export function Modal({ data, download }) {
   const dispatch = useDispatch();
-  const indx = useSelector(state => state.imageIndx);
+  const indx = useSelector(state => state.imgIndx);
   const scrollImgByKeyDown = event => {
     if (event.code === 'ArrowRight' && indx + 1 !== data.length) {
-      dispatch(changeImageIndx(+1));
+      dispatch(setImgIndx(+1));
     }
     if (event.code === 'ArrowLeft' && indx !== 0) {
-      dispatch(changeImageIndx(-1));
+      dispatch(setImgIndx(-1));
     }
   };
   const handleKeyDown = event => {
     if (event.code === 'Escape') {
-      dispatch(setModalSlice());
+      dispatch(setModal());
       document.querySelector('body').classList.remove('modal-root');
     }
   };
   const handleBackDropClick = event => {
     if (event.currentTarget === event.target) {
-      dispatch(setModalSlice());
+      dispatch(setModal());
       document.querySelector('body').classList.remove('modal-root');
     }
   };
@@ -65,18 +65,10 @@ export function Modal({ data, download }) {
         <Img src={urls.regular} alt={alt_description} />
       </ModalModal>
       {indx !== 0 && (
-        <Prev
-          size={77}
-          fill="#fff"
-          onClick={() => dispatch(changeImageIndx(-1))}
-        />
+        <Prev size={77} fill="#fff" onClick={() => dispatch(setImgIndx(-1))} />
       )}
       {indx + 1 !== data.length && (
-        <Next
-          size={77}
-          fill="#fff"
-          onClick={() => dispatch(changeImageIndx(+1))}
-        />
+        <Next size={77} fill="#fff" onClick={() => dispatch(setImgIndx(+1))} />
       )}
     </Overlay>,
     modalRoot
