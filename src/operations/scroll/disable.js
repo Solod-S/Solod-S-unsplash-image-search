@@ -2,7 +2,7 @@ import { preventScroll } from './preventScroll';
 const disable = () =>
   document
     .querySelector('#modal-root')
-    .addEventListener(
+    .removeEventListener(
       'wheel',
       preventScroll.bind(document.querySelector('#modal-root'))
     );
