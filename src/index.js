@@ -12,16 +12,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Box>
-        <Provider store={store}>
-          <BrowserRouter basename="Unsplash-Image-Search-REST-API">
+      <BrowserRouter basename="Unsplash-Image-Search-REST-API">
+        <Box>
+          <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
               <App />
               <GlobalStyle />
             </PersistGate>
-          </BrowserRouter>
-        </Provider>
-      </Box>
+          </Provider>
+        </Box>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
 );
