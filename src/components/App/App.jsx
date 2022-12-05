@@ -6,9 +6,11 @@ import { lazy } from 'react';
 
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
 import { SharedLayout } from '../SharedLayout/SharedLayout';
-const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 // import HomePage from 'pages/HomePage/HomePage';
-const FavoritePage = lazy(() => import('pages/FavoritePage/FavoritePage'));
+const FavoritePage = lazy(() =>
+  import('../../pages/FavoritePage/FavoritePage')
+);
 // import FavoritePage from 'pages/FavoritePage/FavoritePage';
 
 export const App = () => {

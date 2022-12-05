@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link, Nav } from './SharedLayout.styled';
-
+import { LazyLoader } from 'components/Loader/LazyLoader';
 import { Box } from 'components/Box/Box';
 
 export const SharedLayout = () => {
@@ -15,8 +15,7 @@ export const SharedLayout = () => {
           <Link to="/favorite">Favorite</Link>
         </Nav>
       </Header>
-      {/* <Outlet /> */}
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense fallback={<LazyLoader />}>
         <Outlet />
       </Suspense>
     </Box>
