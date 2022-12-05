@@ -13,14 +13,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Box>
-        <BrowserRouter basename="Unsplash-Image-Search-REST-API">
-          <Provider store={store}>
+        <Provider store={store}>
+          <BrowserRouter basename="Unsplash-Image-Search-REST-API">
             <PersistGate loading={null} persistor={persistor}>
               <App />
               <GlobalStyle />
             </PersistGate>
-          </Provider>
-        </BrowserRouter>
+          </BrowserRouter>
+        </Provider>
       </Box>
     </ThemeProvider>
   </React.StrictMode>
