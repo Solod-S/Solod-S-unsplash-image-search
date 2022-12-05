@@ -33,7 +33,7 @@ export const App = () => {
           }
         />
         <Route
-          path="favorite"
+          path="/favorite"
           element={
             <FavoritePage
               images={images}
