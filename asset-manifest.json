@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Unsplash-Image-Search-REST-API/static/css/main.8fddef9f.css",
-    "main.js": "/Unsplash-Image-Search-REST-API/static/js/main.e63bc327.js",
+    "main.js": "/Unsplash-Image-Search-REST-API/static/js/main.ca3653e1.js",
     "static/media/header.jpg": "/Unsplash-Image-Search-REST-API/static/media/header.716794a28494125bc062.jpg",
     "index.html": "/Unsplash-Image-Search-REST-API/index.html",
     "main.8fddef9f.css.map": "/Unsplash-Image-Search-REST-API/static/css/main.8fddef9f.css.map",
-    "main.e63bc327.js.map": "/Unsplash-Image-Search-REST-API/static/js/main.e63bc327.js.map"
+    "main.ca3653e1.js.map": "/Unsplash-Image-Search-REST-API/static/js/main.ca3653e1.js.map"
   },
   "entrypoints": [
     "static/css/main.8fddef9f.css",
-    "static/js/main.e63bc327.js"
+    "static/js/main.ca3653e1.js"
   ]
 }
