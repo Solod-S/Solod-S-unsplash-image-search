@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import { SharedLayout } from '../SharedLayout/SharedLayout';
-import HomePage from '../../pages/HomePage/HomePage';
-import FavoritePage from '../../pages/FavoritePage/FavoritePage';
+import HomePage from '../../../src/pages/HomePage/HomePage';
+import FavoritePage from '../../../src/pages/FavoritePage/FavoritePage';
 
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
 

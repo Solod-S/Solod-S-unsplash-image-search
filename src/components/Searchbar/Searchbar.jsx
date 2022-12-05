@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
+
 import { Container, Header, Form, Button, Input } from './Searchbar.styled';
 import { IoIosSearch } from 'react-icons/io';
 
 export function Searchbar({ onImgsSeach }) {
-  const [searchQuery, setSearchQuery] = useState('');
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentParams = searchParams.get('query') ?? '';
   const handleSubeventmit = event => {
     event.preventDefault();
-    if (searchQuery === '') {
-      return;
+    const searcForm = event.currentTarget;
+    const query = searcForm.elements.searchQuery.value.toLowerCase();
+    setSearchParams({
+      query,
+    });
+    searcForm.reset();
+  };
+  useEffect(() => {
+    if (currentParams.length) {
+      onImgsSeach(currentParams);
     }
-    onImgsSeach(searchQuery);
-    setSearchQuery('');
-  };
-
-  const handleNameChange = event => {
-    setSearchQuery(event.currentTarget.value.toLowerCase());
-  };
-
+  }, [currentParams, onImgsSeach]);
   return (
     <Header>
       <Container>
@@ -28,8 +32,6 @@ export function Searchbar({ onImgsSeach }) {
             autoComplete="off"
             autoFocus
             name="searchQuery"
-            value={searchQuery}
-            onChange={handleNameChange}
             placeholder="Search images and photos"
           />
           <Button type="submit">
