@@ -40,6 +40,7 @@ export function Modal({ data, download }) {
   };
   const { urls, alt_description } = data[indx];
   useEffect(() => {
+    console.log(`test`);
     scroll.enable();
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keydown', scrollImgByKeyDown);
