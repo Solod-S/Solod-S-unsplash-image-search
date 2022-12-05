@@ -2,13 +2,14 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
-import { SharedLayout } from '../SharedLayout/SharedLayout';
-
-import HomePage from 'pages/HomePage/HomePage';
-import FavoritePage from 'pages/FavoritePage/FavoritePage';
+import { lazy } from 'react';
 
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
+import { SharedLayout } from '../SharedLayout/SharedLayout';
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+// import HomePage from 'pages/HomePage/HomePage';
+const FavoritePage = lazy(() => import('pages/FavoritePage/FavoritePage'));
+// import FavoritePage from 'pages/FavoritePage/FavoritePage';
 
 export const App = () => {
   const [images, setImages] = useState([]);

@@ -1,4 +1,4 @@
-// import { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link, Nav } from './SharedLayout.styled';
 
@@ -15,10 +15,10 @@ export const SharedLayout = () => {
           <Link to="/favorite">Favorite</Link>
         </Nav>
       </Header>
-      <Outlet />
-      {/* <Suspense fallback={<div>Loading page...</div>}>
+      {/* <Outlet /> */}
+      <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
-      </Suspense> */}
+      </Suspense>
     </Box>
   );
 };
