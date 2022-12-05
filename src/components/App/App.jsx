@@ -1,11 +1,13 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+
 import { SharedLayout } from '../SharedLayout/SharedLayout';
-import HomePage from 'pages/HomePage/HomePage';
-import FavoritePage from 'pages/FavoritePage/FavoritePage';
+import HomePage from '../../pages/HomePage/HomePage';
+import FavoritePage from '../../pages/FavoritePage/FavoritePage';
+
+import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
 
 export const App = () => {
   const [images, setImages] = useState([]);
