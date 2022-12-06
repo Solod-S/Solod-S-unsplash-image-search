@@ -1,20 +1,23 @@
+import { useSelector } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
+import { toast, ToastContainer, Flip } from 'react-toastify';
+import PropTypes from 'prop-types';
+
 import { Searchbar } from 'components/Searchbar/Searchbar';
-import { ErrorMsg, AppWrapper } from './HomePage.styled';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { PaginationBtns } from 'components/PaginationBtns/PaginationBtns';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
-import { toast } from 'react-toastify';
-import { ToastContainer, Flip } from 'react-toastify';
-import { useSelector } from 'react-redux';
 import { Footer } from 'components/Footer/Footer';
+
 import rest from 'services/rest';
 import services from 'services/others';
 import download from 'operations/download';
-import PropTypes from 'prop-types';
 import scroll from 'operations/scroll';
+
+import { ErrorMsg, AppWrapper } from './HomePage.styled';
+
 function HomePage({ addToFovorite, images, setImages }) {
   const { unsplash } = rest;
   const { toastSettings } = services;

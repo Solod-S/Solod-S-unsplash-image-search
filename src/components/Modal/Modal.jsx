@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { setModal } from 'redux/slices/modalSlice';
 import { changeImgIndx } from 'redux/slices/imgIndxSlice';
+import scroll from 'operations/scroll';
+
 import {
   Overlay,
   ModalModal,
@@ -12,9 +16,7 @@ import {
   Btn,
   Download,
 } from './Modal.styled';
-import { createPortal } from 'react-dom';
-// import { object } from 'yup';
-import scroll from 'operations/scroll';
+
 const modalRoot = document.querySelector('#modal-root');
 
 export function Modal({ data, download }) {
@@ -40,7 +42,6 @@ export function Modal({ data, download }) {
   };
   const { urls, alt_description } = data[indx];
   useEffect(() => {
-    console.log(`test`);
     scroll.enable();
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keydown', scrollImgByKeyDown);
@@ -77,4 +78,5 @@ export function Modal({ data, download }) {
 
 Modal.propTypes = {
   data: PropTypes.array.isRequired,
+  download: PropTypes.func.isRequired,
 };

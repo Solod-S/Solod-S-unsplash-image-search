@@ -1,8 +1,10 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, Link, Nav } from './SharedLayout.styled';
+
 import { LazyLoader } from 'components/Loader/LazyLoader';
+
 import { Box } from 'components/Box/Box';
+import { Header, Link, Nav } from './SharedLayout.styled';
 
 export const SharedLayout = () => {
   return (

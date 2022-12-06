@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 
-import { Container, Header, Form, Button, Input } from './Searchbar.styled';
 import { IoIosSearch } from 'react-icons/io';
+import { Container, Header, Form, Button, Input } from './Searchbar.styled';
 
 export function Searchbar({ onImgsSeach }) {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsChevronDoubleDown, BsChevronDoubleUp } from 'react-icons/bs';
 import { ChevronUp, ChevronDown, Chevron } from './ScrollChevron.styled';
 

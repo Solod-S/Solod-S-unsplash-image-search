@@ -1,7 +1,8 @@
-import React from 'react';
-import { List, Container } from './ImageGallery.styled';
-import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
+
+import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
+
+import { List, Container } from './ImageGallery.styled';
 
 export const ImageGallery = ({ images, download, addToFovorite }) => {
   return (

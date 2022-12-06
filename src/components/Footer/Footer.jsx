@@ -1,4 +1,3 @@
-import React from 'react';
 import { FooterEl, Text, Link } from './Footer.styled';
 
 export const Footer = () => {

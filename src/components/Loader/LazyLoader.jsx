@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ThreeCircles } from 'react-loader-spinner';
 
 export const LazyLoader = () => {

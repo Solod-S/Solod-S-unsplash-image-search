@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -9,6 +8,7 @@ import {
   Wrapper,
   CurrentPage,
 } from './PaginationBtnsl.styled';
+
 export const PaginationBtns = ({
   onLoadMore,
   currentPage,
@@ -36,6 +36,7 @@ export const PaginationBtns = ({
     </Wrapper>
   );
 };
+
 PaginationBtns.propTypes = {
   onLoadMore: PropTypes.func.isRequired,
   searchQuery: PropTypes.oneOfType([

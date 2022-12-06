@@ -5,9 +5,6 @@ export const GalleryItemLi = styled.li`
   position: relative;
   overflow: hidden;
   color: ${p => p.theme.colors.primaryText};
-  /* max-width: 350px;
-  height: 100%; */
-  /* margin: ${p => p.theme.space[4]}px; */
   margin-bottom: 1rem;
   border-radius: ${p => p.theme.radii.normal};
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),

@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
+import { toast, ToastContainer, Flip } from 'react-toastify';
+import PropTypes from 'prop-types';
+
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { Modal } from 'components/Modal/Modal';
 import { LoaderSpiner } from 'components/Loader/Loader';
-import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
-import { toast } from 'react-toastify';
-import { ToastContainer, Flip } from 'react-toastify';
-import { warmSetting } from 'services/others/toast/notificationSetting';
 import { Footer } from 'components/Footer/Footer';
+import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
+
 import rest from 'services/rest';
+import { warmSetting } from 'services/others/toast/notificationSetting';
 import download from 'operations/download';
-import PropTypes from 'prop-types';
+
+import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
 
 function FavoritePage({ addToFovorite, images, setImages }) {
   const { unsplash } = rest;
