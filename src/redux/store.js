@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { persistedContactReducer } from './rootReducer';
 import {
   persistStore,
@@ -9,6 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 export const store = configureStore({
   reducer: persistedContactReducer,
 
@@ -19,4 +21,5 @@ export const store = configureStore({
       },
     }),
 });
+
 export const persistor = persistStore(store);

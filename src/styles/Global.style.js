@@ -2,9 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import '@csstools/normalize.css';
 import 'animate.css';
 import 'react-toastify/dist/ReactToastify.css';
+
 export const GlobalStyle = createGlobalStyle`
-
-
 
 body {
   margin: 0;
