@@ -18,9 +18,10 @@ import scroll from 'operations/scroll';
 
 import { ErrorMsg, AppWrapper } from './HomePage.styled';
 
-function HomePage({ addToFovorite, images, setImages }) {
+function HomePage({ handleFovorite }) {
   const { unsplash } = rest;
   const { toastSettings } = services;
+  const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
@@ -67,7 +68,6 @@ function HomePage({ addToFovorite, images, setImages }) {
     if (!searchQuery) {
       return;
     }
-
     async function fetch() {
       try {
         setIsLoading(true);
@@ -146,7 +146,7 @@ function HomePage({ addToFovorite, images, setImages }) {
         <ImageGallery
           images={images}
           download={download}
-          addToFovorite={addToFovorite}
+          handleFovorite={handleFovorite}
         />
       )}
       {isLoading && <LoaderSpiner />}
@@ -168,16 +168,7 @@ function HomePage({ addToFovorite, images, setImages }) {
 }
 
 HomePage.propTypes = {
-  addToFovorite: PropTypes.func.isRequired,
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      urls: PropTypes.object.isRequired,
-      links: PropTypes.object.isRequired,
-      user: PropTypes.object.isRequired,
-    })
-  ).isRequired,
-  setImages: PropTypes.func.isRequired,
+  handleFovorite: PropTypes.func.isRequired,
 };
 
 export default HomePage;

@@ -15,7 +15,8 @@ import download from 'operations/download';
 
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
 
-function FavoritePage({ addToFovorite, images, setImages }) {
+function FavoritePage({ handleFovorite }) {
+  const [images, setImages] = useState([]);
   const { unsplash } = rest;
   const favorite = useSelector(state => state.favorite);
   const [error, setError] = useState(false);
@@ -74,7 +75,7 @@ function FavoritePage({ addToFovorite, images, setImages }) {
         <ImageGallery
           images={images}
           download={download}
-          addToFovorite={addToFovorite}
+          handleFovorite={handleFovorite}
         />
       )}
       {isLoading && <LoaderSpiner />}
@@ -87,16 +88,7 @@ function FavoritePage({ addToFovorite, images, setImages }) {
 }
 
 FavoritePage.propTypes = {
-  addToFovorite: PropTypes.func.isRequired,
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      urls: PropTypes.object.isRequired,
-      links: PropTypes.object.isRequired,
-      user: PropTypes.object.isRequired,
-    })
-  ).isRequired,
-  setImages: PropTypes.func.isRequired,
+  handleFovorite: PropTypes.func.isRequired,
 };
 
 export default FavoritePage;

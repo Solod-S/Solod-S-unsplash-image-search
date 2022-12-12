@@ -19,7 +19,7 @@ import {
   FooterImg,
 } from './ImageGalleryItem.style';
 
-export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
+export const ImageGalleryItem = ({ data, indx, download, handleFovorite }) => {
   const dispatch = useDispatch();
   const favorite = useSelector(state => state.favorite);
 
@@ -36,7 +36,7 @@ export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
     <GalleryItemLi animate__wobble onClick={setIndxInModal}>
       {favorite.includes(data.id) ? (
         <AddToFavoriteBtn
-          onClick={() => addToFovorite(data.id)}
+          onClick={() => handleFovorite(data.id)}
           variant="contained"
           size="small"
         >
@@ -44,7 +44,7 @@ export const ImageGalleryItem = ({ data, indx, download, addToFovorite }) => {
         </AddToFavoriteBtn>
       ) : (
         <AddToFavoriteBtn
-          onClick={() => addToFovorite(data.id)}
+          onClick={() => handleFovorite(data.id)}
           variant="contained"
           size="small"
         >
