@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer, Flip } from 'react-toastify';
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,8 @@ import { LoaderSpiner } from 'components/Loader/Loader';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 import { Footer } from 'components/Footer/Footer';
 
+import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
+
 import rest from 'services/rest';
 import services from 'services/others';
 import download from 'operations/download';
@@ -18,17 +20,28 @@ import scroll from 'operations/scroll';
 
 import { ErrorMsg, AppWrapper } from './HomePage.styled';
 
-function HomePage({ handleFovorite }) {
+function HomePage() {
   const { unsplash } = rest;
   const { toastSettings } = services;
+
+  const favorite = useSelector(state => state.favorite);
+  const openModal = useSelector(state => state.modal);
+  const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(() => FirstRender() ?? '');
   const [page, setPage] = useState(1);
-  const openModal = useSelector(state => state.modal);
   const [totalPages, setTotalPages] = useState(1);
   const firstRenderPassed = useRef(false);
+  const dispatch = useDispatch();
+
+  const handleFovorite = id => {
+    if (!favorite.includes(id)) {
+      dispatch(addToFavorite(id));
+    } else {
+      dispatch(removeFromFavorite(id));
+    }
+  };
 
   async function FirstRender() {
     async function fetch() {

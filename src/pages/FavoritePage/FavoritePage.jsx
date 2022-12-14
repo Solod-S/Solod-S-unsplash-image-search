@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer, Flip } from 'react-toastify';
 import PropTypes from 'prop-types';
 
@@ -9,19 +9,32 @@ import { LoaderSpiner } from 'components/Loader/Loader';
 import { Footer } from 'components/Footer/Footer';
 import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 
+import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
+
 import rest from 'services/rest';
 import { warmSetting } from 'services/others/toast/notificationSetting';
 import download from 'operations/download';
 
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
 
-function FavoritePage({ handleFovorite }) {
-  const [images, setImages] = useState([]);
+function FavoritePage() {
   const { unsplash } = rest;
+
   const favorite = useSelector(state => state.favorite);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const openModal = useSelector(state => state.modal);
+  const [error, setError] = useState(false);
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleFovorite = id => {
+    if (!favorite.includes(id)) {
+      dispatch(addToFavorite(id));
+    } else {
+      dispatch(removeFromFavorite(id));
+    }
+  };
+
   async function renderFavorite() {
     setIsLoading(true);
     async function fetch(parsedId) {
