@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/Unsplash-Image-Search-REST-API/static/css/main.8fddef9f.css",
-    "main.js": "/Unsplash-Image-Search-REST-API/static/js/main.1f5b98df.js",
-    "static/js/349.cf5b33cc.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/349.cf5b33cc.chunk.js",
-    "static/js/984.9640f245.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/984.9640f245.chunk.js",
+    "main.js": "/Unsplash-Image-Search-REST-API/static/js/main.8bbc92c2.js",
+    "static/js/602.4f5d060e.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/602.4f5d060e.chunk.js",
+    "static/js/46.86c5da71.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/46.86c5da71.chunk.js",
     "static/js/85.bf07e91f.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/85.bf07e91f.chunk.js",
     "static/js/299.213e6d56.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/299.213e6d56.chunk.js",
-    "static/js/710.29a97aa9.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/710.29a97aa9.chunk.js",
+    "static/js/679.775a58f4.chunk.js": "/Unsplash-Image-Search-REST-API/static/js/679.775a58f4.chunk.js",
     "static/media/header.jpg": "/Unsplash-Image-Search-REST-API/static/media/header.716794a28494125bc062.jpg",
     "index.html": "/Unsplash-Image-Search-REST-API/index.html",
     "main.8fddef9f.css.map": "/Unsplash-Image-Search-REST-API/static/css/main.8fddef9f.css.map",
-    "main.1f5b98df.js.map": "/Unsplash-Image-Search-REST-API/static/js/main.1f5b98df.js.map",
-    "349.cf5b33cc.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/349.cf5b33cc.chunk.js.map",
-    "984.9640f245.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/984.9640f245.chunk.js.map",
+    "main.8bbc92c2.js.map": "/Unsplash-Image-Search-REST-API/static/js/main.8bbc92c2.js.map",
+    "602.4f5d060e.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/602.4f5d060e.chunk.js.map",
+    "46.86c5da71.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/46.86c5da71.chunk.js.map",
     "85.bf07e91f.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/85.bf07e91f.chunk.js.map",
     "299.213e6d56.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/299.213e6d56.chunk.js.map",
-    "710.29a97aa9.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/710.29a97aa9.chunk.js.map"
+    "679.775a58f4.chunk.js.map": "/Unsplash-Image-Search-REST-API/static/js/679.775a58f4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8fddef9f.css",
-    "static/js/main.1f5b98df.js"
+    "static/js/main.8bbc92c2.js"
   ]
 }
