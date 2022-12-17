@@ -4,7 +4,7 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 
 import { List, Container } from './ImageGallery.styled';
 
-export const ImageGallery = ({ images, download, handleFovorite }) => {
+export const ImageGallery = ({ images, handleFovorite }) => {
   return (
     <Container>
       <List>
@@ -13,7 +13,6 @@ export const ImageGallery = ({ images, download, handleFovorite }) => {
             key={image.id}
             data={image}
             indx={indx}
-            download={download}
             handleFovorite={handleFovorite}
           />
         ))}

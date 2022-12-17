@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer, Flip } from 'react-toastify';
-import PropTypes from 'prop-types';
 
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
@@ -13,16 +12,15 @@ import { Footer } from 'components/Footer/Footer';
 
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
 
-import rest from 'services/rest';
-import services from 'services/others';
-import download from 'operations/download';
+import rest from 'utils/rest';
+import utils from 'utils/others';
 import scroll from 'operations/scroll';
 
 import { ErrorMsg, AppWrapper } from './HomePage.styled';
 
 function HomePage() {
   const { unsplash } = rest;
-  const { toastSettings } = services;
+  const { toastSettings } = utils;
 
   const favorite = useSelector(state => state.favorite);
   const openModal = useSelector(state => state.modal);
@@ -45,7 +43,7 @@ function HomePage() {
 
   async function FirstRender() {
     async function fetch() {
-      setIsLoading(true);
+      // setIsLoading(true);
       const imagesResponse = await unsplash.getRandom();
       const images = imagesResponse.data;
       const preparedImgs = images.map(
@@ -59,7 +57,7 @@ function HomePage() {
       );
 
       setImages(prevState => [...preparedImgs]);
-      setIsLoading(false);
+      // setIsLoading(false);
     }
     try {
       fetch();
@@ -156,14 +154,10 @@ function HomePage() {
         <ErrorMsg>Something wrong.. Press F5 and try again. :( </ErrorMsg>
       )}
       {images.length > 0 && (
-        <ImageGallery
-          images={images}
-          download={download}
-          handleFovorite={handleFovorite}
-        />
+        <ImageGallery images={images} handleFovorite={handleFovorite} />
       )}
       {isLoading && <LoaderSpiner />}
-      {images.length && (
+      {images.length > 1 && (
         <PaginationBtns
           onLoadMore={onLoadMore}
           currentPage={page}
@@ -174,14 +168,10 @@ function HomePage() {
       )}
 
       {images.length > 11 && <ScrollChevron />}
-      {openModal && <Modal data={images} download={download} />}
+      {openModal && <Modal data={images} />}
       <Footer>Copyright © Все права защищены.</Footer>
     </AppWrapper>
   );
 }
-
-HomePage.propTypes = {
-  handleFovorite: PropTypes.func.isRequired,
-};
 
 export default HomePage;

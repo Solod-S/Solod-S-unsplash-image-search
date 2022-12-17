@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer, Flip } from 'react-toastify';
-import PropTypes from 'prop-types';
 
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 import { Modal } from 'components/Modal/Modal';
@@ -11,9 +10,8 @@ import { ScrollChevron } from 'components/ScrollChevron/ScrollChevron';
 
 import { addToFavorite, removeFromFavorite } from 'redux/slices/favoriteSlice';
 
-import rest from 'services/rest';
-import { warmSetting } from 'services/others/toast/notificationSetting';
-import download from 'operations/download';
+import rest from 'utils/rest';
+import { warmSetting } from 'utils/others/toast/notificationSetting';
 
 import { ErrorMsg, AppWrapper } from './FavoritePage.styled';
 
@@ -85,23 +83,15 @@ function FavoritePage() {
         <ErrorMsg>Something wrong.. Press F5 and try again. :( </ErrorMsg>
       )}
       {images.length > 0 && (
-        <ImageGallery
-          images={images}
-          download={download}
-          handleFovorite={handleFovorite}
-        />
+        <ImageGallery images={images} handleFovorite={handleFovorite} />
       )}
       {isLoading && <LoaderSpiner />}
       {images.length > 11 && <ScrollChevron />}
-      {openModal && <Modal data={images} download={download} />}
+      {openModal && <Modal data={images} />}
 
       <Footer>Copyright © Все права защищены.</Footer>
     </AppWrapper>
   );
 }
-
-FavoritePage.propTypes = {
-  handleFovorite: PropTypes.func.isRequired,
-};
 
 export default FavoritePage;

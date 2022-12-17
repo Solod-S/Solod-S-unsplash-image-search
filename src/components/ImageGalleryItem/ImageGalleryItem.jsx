@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setImgIndx } from 'redux/slices/imgIndxSlice';
 import { setModal } from 'redux/slices/modalSlice';
 
+import download from 'operations/download';
+
 import {
   AddToFavoriteBtn,
   AddToFavoriteIcon,
@@ -19,7 +21,7 @@ import {
   FooterImg,
 } from './ImageGalleryItem.style';
 
-export const ImageGalleryItem = ({ data, indx, download, handleFovorite }) => {
+export const ImageGalleryItem = ({ data, indx, handleFovorite }) => {
   const dispatch = useDispatch();
   const favorite = useSelector(state => state.favorite);
 

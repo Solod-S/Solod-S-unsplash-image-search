@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 import { setModal } from 'redux/slices/modalSlice';
 import { changeImgIndx } from 'redux/slices/imgIndxSlice';
+
 import scroll from 'operations/scroll';
+import download from 'operations/download';
 
 import {
   Overlay,
@@ -19,7 +21,7 @@ import {
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function Modal({ data, download }) {
+export function Modal({ data }) {
   const dispatch = useDispatch();
   const indx = useSelector(state => state.imgIndx);
   const scrollImgByKeyDown = event => {
@@ -78,5 +80,4 @@ export function Modal({ data, download }) {
 
 Modal.propTypes = {
   data: PropTypes.array.isRequired,
-  download: PropTypes.func.isRequired,
 };
