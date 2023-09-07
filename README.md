@@ -1,91 +1,69 @@
-**Read in other languages: [Русский](README.md), [Polska](README.pl.md),
-[English](README.en.md), [Spanish](README.es.md).**
+![Version](https://img.shields.io/badge/Version-1.0-blue.svg?cacheSeconds=2592000)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![runs with react](https://img.shields.io/badge/Runs%20with%20React-000.svg?style=flat-square&logo=React&labelColor=f3f3f3&logoColor=61DAFB)](https://uk.legacy.reactjs.org/)
+[![runs with router dom](https://img.shields.io/badge/Runs%20with%20React_Router_Dom-000.svg?style=flat-square&logo=React&labelColor=f3f3f3&logoColor=blue)](https://reactrouter.com/en/main)
+[![runs with redux](https://img.shields.io/badge/Runs%20with%20Redux-000.svg?style=flat-square&logo=Redux&labelColor=f3f3f3&logoColor=7247B5)](https://redux.js.org/)
+[![runs with reactquery](https://img.shields.io/badge/Runs%20with%20React_Query-000.svg?style=flat-square&logo=reactquery&labelColor=f3f3f3&logoColor=FF4154)](https://www.npmjs.com/package/react-query)
+[![runs with styled-components](https://img.shields.io/badge/Runs%20with%20Styled_Components-000.svg?style=flat-square&logo=styledcomponents&labelColor=f3f3f3&logoColor=#DB7093)](https://styled-components.com/)
 
-# React template
+# Image Searcher
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+![Image Searcher Demo](./public/1-min.jpg)
 
-## Подготовка нового проекта
+**_Built using React JS, Redux, React Query, Firebase & Styled-Components_**.
+Web application which allow you to search, download and save in web your
+favorite images.
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Клонируй этот репозиторий.
-3. Измени имя папки с `react-homework-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи базовые зависимости проекта командой `npm install`.
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+## The Tech Stack:
 
-## Деплой
+    react
+    react-dom
+    react-router-dom
+    redux
+    react-redux
+    reduxjs/toolkit
+    redux-persist
+    styled-components
+    react-loader-spinner
+    react-toastify
+    yup
+    prop-types
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+## Features and Fuctionality
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+- Search images
+- Image download
+- Add to favorite
+
+![Image Searcher Demo](./public/2-min.jpg)
+
+## How to install
+
+### Using Git (recommended)
+
+1.  Clone the project from github. Change "myproject" to your project name.
+
+```bash
+git clone https://github.com/Solod-S/Unsplash-Image-Search-REST-API.git ./myproject
 ```
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+### Using manual download ZIP
 
-![GitHub Pages settings](./assets/repo-settings.png)
+1.  Download repository
+2.  Uncompress to your desired directory
 
-### Статус деплоя
+### Install npm dependencies after installing (Git or manual download)
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
-
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
-
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
-
-![Deployment status](./assets/status.png)
-
-### Живая страница
-
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
-
-### Маршрутизация
-
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеши в начале и конце строки
-обязательны.
-
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
+```bash
+cd myproject
+npm install
 ```
 
-## Как это работает
+## Contributing
 
-![How it works](./assets/how-it-works.png)
+Contributions are welcome! If you have any suggestions or improvements, please
+create a pull request. For major changes, please open an issue first to discuss
+the changes.
 
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.
+**_NOTE: PLEASE LET ME KNOW IF YOU DISCOVERED ANY BUG OR YOU HAVE ANY
+SUGGESTIONS_**
